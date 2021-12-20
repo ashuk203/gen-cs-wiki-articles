@@ -1,1 +1,9 @@
+models/**
+cache_dir/**
+models/**
+outputs/**
+runs/**
+setup/**
 data/**
+logs/**
+**/__pycache__/
