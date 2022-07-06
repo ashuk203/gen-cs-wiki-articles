@@ -382,6 +382,8 @@ def generic_train(
     if args.gpus > 1:
         train_params["accelerator"] = "auto"  # "ddp"
         train_params["strategy"] = "ddp"
+    elif args.gpus == 1:
+        train_params["accelerator"] = "auto"
 
     train_params["accumulate_grad_batches"] = args.accumulate_grad_batches
     train_params["profiler"] = None  # extra_train_kwargs.get("profiler", None) #get unwanted logs

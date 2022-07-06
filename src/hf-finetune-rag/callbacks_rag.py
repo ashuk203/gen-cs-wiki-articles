@@ -32,6 +32,8 @@ def get_checkpoint_callback(output_dir, metric):
             f"seq2seq callbacks only support rouge2 and bleu, got {metric}, You can make your own by adding to this function."
         )
 
+    exp = "test-model"
+    print("Ay yooo", output_dir, exp)
     checkpoint_callback = ModelCheckpoint(
         dirpath=output_dir,
         filename=exp,

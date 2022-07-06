@@ -1,11 +1,17 @@
 """
 A script creating a RAG checkpoint from a generator and a question encoder checkpoints.
 """
+import sys
+sys.path.insert(1, '/home/aukey2/gen-cs-wiki-articles/rag_branch/src')
+
+from custom_qencoder import DPRAugQuestionEncoder
 
 import argparse
 from pathlib import Path
 
-from transformers import AutoConfig, AutoTokenizer, RagConfig, RagSequenceForGeneration, RagTokenForGeneration
+from transformers import AutoConfig, AutoTokenizer, RagConfig, RagSequenceForGeneration, RagTokenForGeneration, DPRConfig, BartForConditionalGeneration
+
+import pdb
 
 
 def consolidate(
@@ -37,19 +43,67 @@ def consolidate(
     rag_config.generator = gen_config
     rag_config.question_encoder = question_encoder_config
 
-    rag_model = model_class.from_pretrained_question_encoder_generator(
-        question_encoder_name_or_path, generator_name_or_path, config=rag_config
-    )
-    rag_model.save_pretrained(dest_dir)
+    """
+    TODO: @Ashu the problem is that the question_encoder_name_or_path is not recognizing your custom question encoder that you have defined, you may need to explicity specify this
 
-    # Sanity check.
-    model_class.from_pretrained(dest_dir)
+    Structure of variable
+    rag_model: RagTokenForGeneration
+        - rag: RagModel
+            - generator: models.bart.modeling_bart.BartForConditionalGeneration
+            - retriever: distributed_ray_retriever.RagRayDistributedRetriever
+            - question_encoder: custom_qencoder.DPRAugQuestionEncoder
+        - question_encoder: custom_qencoder.DPRAugQuestionEncoder
+
+    Possible solutions:
+    1) Download source code and try directly modifying RAG class(es). May need to import a lot of things...
+    2) Figure out which variables can override the default class assumption of  
+    """
+    # Solution 2
+    config  = DPRConfig.from_pretrained("facebook/dpr-question_encoder-single-nq-base")
+    question_encoder_model = DPRAugQuestionEncoder(config)
+
+
+    rag_model = model_class.from_pretrained_question_encoder_generator(
+        None,
+        generator_name_or_path, # facebook/bart-large
+        config=rag_config,
+        question_encoder_model=question_encoder_model # question_encoder_name_or_path,  # /scratch/aukey2/rag-ft-models/blank/aug_qencoder
+    )
+    # pdb.set_trace()
+
+    # Saving qencoder component seperately because it is causing issues
+    rag_model.save_pretrained(dest_dir)
+    rag_model.rag.generator.save_pretrained(dest_dir / "gener")
+    rag_model.rag.question_encoder.save_pretrained(dest_dir / "q_encoder")
+    # rag_model.question_encoder.save_pretrained(dest_dir / "q_encoder")
+
+
+    # Sanity check (reloading from individual parts)
+    temp_gener = BartForConditionalGeneration.from_pretrained(dest_dir / "gener")
+    temp_q_enc = DPRAugQuestionEncoder.from_pretrained(dest_dir / "q_encoder")
+    # temp = model_class.from_pretrained(dest_dir)
+
+    temp = model_class.from_pretrained_question_encoder_generator(
+        None,
+        None,
+        config=rag_config,
+        generator_model=temp_gener,
+        question_encoder_model=temp_q_enc
+    )
+    # pdb.set_trace()
+
+    print("Testing load model from", dest_dir)
 
     # Save tokenizers.
+    
+    # additional_special_tokens=["[SECTSEP]", "[DEF]"]
     gen_tokenizer = AutoTokenizer.from_pretrained(generator_tokenizer_name_or_path)
     gen_tokenizer.save_pretrained(dest_dir / "generator_tokenizer/")
+
+    # additional_special_tokens=["[SECTSEP]", "[DEF]"]
     question_encoder_tokenizer = AutoTokenizer.from_pretrained(question_encoder_tokenizer_name_or_path)
     question_encoder_tokenizer.save_pretrained(dest_dir / "question_encoder_tokenizer/")
+    print("Saving tokenizers! to", dest_dir)
 
 
 if __name__ == "__main__":

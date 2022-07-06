@@ -15,8 +15,11 @@ from transformers import logging as transformers_logging
 
 
 sys.path.append(os.path.join(os.getcwd()))  # noqa: E402 # isort:skip
-from utils_rag import exact_match_score, f1_score  # noqa: E402 # isort:skip
+from utils_rag import exact_match_score, f1_score, pickle_save  # noqa: E402 # isort:skip
 
+import json
+import pdb
+import pickle
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -309,4 +312,9 @@ def main(args):
 
 if __name__ == "__main__":
     args = get_args()
+
+    pdb.set_trace()
+    # pickle_save(args, "eval_script_args.pkl")
+    exit()
+
     main(args)

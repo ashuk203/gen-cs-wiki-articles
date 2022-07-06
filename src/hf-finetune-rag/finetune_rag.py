@@ -1,9 +1,13 @@
 """Finetuning script for RAG models. Adapted from examples.seq2seq.finetune.py"""
+import sys
+sys.path.insert(1, '/home/aukey2/gen-cs-wiki-articles/rag_branch/src')
+
+from custom_qencoder import DPRAugQuestionEncoder
 
 import argparse
 import logging
 import os
-import sys
+# import sys
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -27,10 +31,10 @@ from transformers import (
     RagTokenForGeneration,
     RagTokenizer,
     T5ForConditionalGeneration,
+    DPRConfig
 )
 from transformers import logging as transformers_logging
 from transformers.integrations import is_ray_available
-
 
 if is_ray_available():
     import ray
@@ -55,6 +59,10 @@ from utils_rag import (  # noqa: E402 # isort:skip
     set_extra_model_params,
     Seq2SeqDataset,
 )
+
+import pickle
+import pdb
+from tqdm import tqdm
 
 # need the parent dir module
 sys.path.insert(2, str(Path(__file__).resolve().parents[1]))
@@ -137,7 +145,21 @@ class GenerativeQAModule(BaseTransformer):
                 retriever = RagRayDistributedRetriever.from_pretrained(
                     hparams.model_name_or_path, hparams.actor_handles, config=config
                 )
-            model = self.model_class.from_pretrained(hparams.model_name_or_path, config=config, retriever=retriever)
+
+            
+            # model = self.model_class.from_pretrained(hparams.model_name_or_path, config=config, retriever=retriever)
+
+            qenc_config  = DPRConfig.from_pretrained("facebook/dpr-question_encoder-single-nq-base")
+            question_encoder_model = DPRAugQuestionEncoder(qenc_config)
+
+            model = self.model_class.from_pretrained_question_encoder_generator(
+                None,
+                'facebook/bart-large', # generator_name_or_path
+                config=config,
+                retriever=retriever,
+                question_encoder_model=question_encoder_model # question_encoder_name_or_path,  # /scratch/aukey2/rag-ft-models/blank/aug_qencoder
+            )
+
             prefix = config.question_encoder.prefix
         else:
             if hparams.prefix is not None:
@@ -146,6 +168,7 @@ class GenerativeQAModule(BaseTransformer):
             model = self.model_class.from_pretrained(hparams.model_name_or_path, config=config)
             prefix = config.prefix
 
+        # additional_special_tokens=["[SECTSEP]", "[DEF]"]
         tokenizer = (
             RagTokenizer.from_pretrained(hparams.model_name_or_path)
             if self.is_rag_model
@@ -501,6 +524,44 @@ class GenerativeQAModule(BaseTransformer):
         return parser
 
 
+def save_rag_model(rag_model, dest_dir):
+    """
+        After saving model using this function, consolidate by loading in individual parts
+    """
+    rag_model.save_pretrained(dest_dir)
+
+    rag_model.rag.retriever.save_pretrained(dest_dir / "retriev")
+    rag_model.rag.generator.save_pretrained(dest_dir / "gener")
+    rag_model.rag.question_encoder.save_pretrained(dest_dir / "q_encoder")
+
+
+def run_model(model, inp_txt):
+    inputs = model.tokenizer(inp_txt, return_tensors="pt")
+
+    outputs = model.model.generate(input_ids=inputs["input_ids"].cuda())
+    output_texts = model.tokenizer.batch_decode(outputs.cuda())
+
+    return output_texts
+
+
+def main_cs_test(model, train_data_dir):
+    test_inps_f = train_data_dir + '/' + 'test.source'
+    out_f = train_data_dir + '/' + 'test.gen.target'
+
+    # model.model = model.model.cuda()
+    model = model.cuda()
+
+    with open(test_inps_f) as f:
+        inps = f.readlines()
+
+    print("Generating outputs for test data")
+    with open(out_f, 'w+') as f_o:
+        for i in tqdm(range(len(inps))):
+            inp = inps[i]
+            outline = run_model(model, inp)
+            f_o.write(outline[0] + '\n')
+
+
 def main(args=None, model=None) -> GenerativeQAModule:
     parser = argparse.ArgumentParser()
     parser = pl.Trainer.add_argparse_args(parser)
@@ -548,10 +609,16 @@ def main(args=None, model=None) -> GenerativeQAModule:
             )
             named_actors = [ray.get_actor("retrieval_worker_{}".format(i)) for i in range(args.num_retrieval_workers)]
     args.actor_handles = named_actors
+    
+    # pdb.set_trace()
+    # print(named_actors)
     assert args.actor_handles == named_actors
 
     if model is None:
         model: GenerativeQAModule = GenerativeQAModule(args)
+
+        pickle_save(args, model.output_dir / "model_args.pkl")
+    # exit()
 
     dataset = Path(args.data_dir).name
     if (
@@ -588,13 +655,20 @@ def main(args=None, model=None) -> GenerativeQAModule:
         custom_ddp_plugin=CustomDDP() if args.gpus > 1 else None,
         profiler=pl.profiler.AdvancedProfiler() if args.profile else None,
     )
-    pickle_save(model.hparams, model.output_dir / "hparams.pkl")
+
+    # pickle_save(model.hparams, model.output_dir / "hparams.pkl")
+    # torch.save(model.state_dict(), model.output_dir / "rag.model")
+    
+    # pdb.set_trace()
+    main_cs_test(model, args.data_dir)
+    save_rag_model(model.model, model.output_dir)
 
     if not args.do_predict:
         return model
 
     # test() without a model tests using the best checkpoint automatically
-    trainer.test()
+    # trainer.test()
+    trainer.test(model)
     return model
 
 

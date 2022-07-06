@@ -9,13 +9,16 @@ ray start --head
 # A sample finetuning run, you need to specify data_dir, output_dir and model_name_or_path
 # run ./examples/rag/finetune_rag_ray.sh --help to see all the possible options
 
-python examples/rag/finetune_rag.py \
+python finetune_rag.py \
+    --index_name custom \
+    --index_path /home/aukey2/gen-cs-wiki-articles/rag_branch/reference-code/hf-finetune-rag/data/test_doc_index/my_knowledge_dataset_hnsw_index.faiss \
+    --passages_path /home/aukey2/gen-cs-wiki-articles/rag_branch/reference-code/hf-finetune-rag/data/test_doc_index/my_knowledge_dataset \
     --data_dir $DATA_DIR \
     --output_dir $OUTPUT_DIR \
     --model_name_or_path $MODEL_NAME_OR_PATH \
     --model_type rag_sequence \
     --fp16 \
-    --gpus 8 \
+    --gpus 1 \
     --profile \
     --do_train \
     --do_predict \
@@ -34,7 +37,7 @@ python examples/rag/finetune_rag.py \
     --max_grad_norm 0.1 \
     --lr_scheduler polynomial \
     --learning_rate 3e-05 \
-    --num_train_epochs 100 \
+    --num_train_epochs 1 \
     --warmup_steps 500 \
     --gradient_accumulation_steps 1 \
     --distributed_retriever ray \

@@ -17,14 +17,16 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 from check_torch_gpu import get_device
 from train_nb_model import evaluate_roc
 
+import pdb
+
 # Load the BERT tokenizer
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
 
 # BERT input maximum length
 MAX_LEN = 64
-train_full = True   # whether or not to train on full dataset
+train_full = False   # whether or not to train on full dataset
 models_dir = "models/tutorial"
-trained_classifier_path = f"{models_dir}/ft_full_bert.pickle"
+trained_classifier_path = f"{models_dir}/ft_aug_bert.pickle"
 
 
 def text_preprocessing(text):
@@ -100,13 +102,15 @@ class BertClassifier(nn.Module):
         super(BertClassifier, self).__init__()
         # Specify hidden size of BERT, hidden size of our classifier, and number of labels
         D_in, H, D_out = 768, 50, 2
+        const_emb_dim = 120
 
         # Instantiate BERT model
         self.bert = BertModel.from_pretrained('bert-base-uncased')
+        self.const_emb = torch.rand((1, const_emb_dim))
 
         # Instantiate an one-layer feed-forward classifier
         self.classifier = nn.Sequential(
-            nn.Linear(D_in, H),
+            nn.Linear(D_in + const_emb_dim, H),
             nn.ReLU(),
             #nn.Dropout(0.5),
             nn.Linear(H, D_out)
@@ -127,16 +131,23 @@ class BertClassifier(nn.Module):
         @return   logits (torch.Tensor): an output tensor with shape (batch_size,
                       num_labels)
         """
+        batch_size = input_ids.shape[0]
         # Feed input to BERT
         outputs = self.bert(input_ids=input_ids,
                             attention_mask=attention_mask)
         
         # Extract the last hidden state of the token `[CLS]` for classification task
+        # (i.e. the BERT embedding). Has size torch.Size([batch_size, 768])
         last_hidden_state_cls = outputs[0][:, 0, :]
+        
+        # Concatenate extra vector
+        const_embs = torch.cat([self.const_emb] * batch_size, 0).cuda()
+        aug_hidden_states = torch.cat([last_hidden_state_cls, const_embs], 1).cuda()
 
         # Feed input to classifier to compute logits
-        logits = self.classifier(last_hidden_state_cls)
+        logits = self.classifier(aug_hidden_states)
 
+        # pdb.set_trace()
         return logits
 
 
