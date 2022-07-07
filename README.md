@@ -1,0 +1,1 @@
+This module predicts the outline for an article given its title and a short sentence description about it.
