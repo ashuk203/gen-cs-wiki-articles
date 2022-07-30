@@ -1,57 +1,94 @@
 # Introduction
 
-In this work, we tackle the task of outline generation for articles using a modified version of the Retrieval Augmented Generation framework. Specifically, given some knowledgebase of existing Wikipedia documents and a text input of the form
+In this work, we tackle the task of outline generation for articles using a modified version of the Retrieval Augmented Generation framework. Specifically, given some knowledge base of existing Wikipedia documents and a text input of the form
 
 `<topic>: <description about topic>`
 
-We aim to generate a list of possible subheadings for an article about this topic (e.g. ['Applications', 'History', 'Types']). 
+We aim to generate a list of possible subheadings for an article about this topic (e.g. ['Applications', 'History', 'Types']).
 
-
-
+# Related work
 
 # Architecture
 
 ## Baseline
 
-As a baseline for this task, we train a T5 model to learn the sequence-to-sequence task of directly mapping from the text input to the section headings. 
+As a baseline for this task, we train a T5 model to learn the sequence-to-sequence task of directly mapping from the text input to the section headings.
 
-## Modifications
+## Proposed Architecture
 
-We chose to use a modified version of the RAG (Retrieval Augmented Generation) architecture. The main intuition behind RAG is to augment an input sequence with relevant context text from some knowledge base of documents and then train a generator to convert it from one input sequence to another. 
+We chose to use a modified version of the RAG (Retrieval Augmented Generation) architecture. The main intuition behind RAG is to augment an input sequence with relevant context text from some knowledge base of documents and then train a generator to convert from this augmented input sequence to the desired output (i.e. the subheadings).
 
 ![Orig RAG overview](documentation-pics/RAG-overview.png)
 
-As shown in the above picture, the main components of the RAG architecture are the retreiver and the generator. Our main modifications are centered around the retriever. Specifically, we augment `q(x)` by concatenating another feature vector representative of the input. We also augment `d(z)` with the same kind of feature vector. We add an additional fully connected layer on `q(x)` after augmenting it to allow flexiblity in the dimensions for the query embedding and document / context embedding spaces. 
+As shown in the above picture, the main components of the RAG architecture are the retreiver and the generator. Our main modifications are centered around the retriever. Specifically, we augment $q(x)$ by concatenating another feature vector representative of the input, say $v(x)$. We also augment $d(z)$ with the same kind of feature vector, i.e. $v(z)$. We add an additional fully connected layer on $q(x)$ after augmenting it to allow flexiblity in the dimensions for the query embedding and document / context embedding spaces.
 
 Mathematically,
-* $q'(x) = W \times (q(x) \bigoplus v(x))$
-* $d'(z) = d(z) \bigoplus v(z)$
 
-where $W$ is a learnable parameter, $v(x)$ is some additional features of $x$, and $\bigoplus$ is the vector concatenation operator. Note that $v(x)$ doesn't necessarily solely rely on the text of the article $x$. It could rely on additional meta data about the article (e.g. graphical embedding of the article). 
+- $q'(x) = W \times (q(x) \bigoplus v(x))$
+- $d'(z) = d(z) \bigoplus v(z)$
 
-Additionally, unlike in the original RAG architecture, the text that is used to generate the representation from $q(x)$ is different from the text that is passed down to the generator component.
+where $W$ is a learnable parameter, $v(x)$ is some additional features of $x$, and $\bigoplus$ is the vector concatenation operator. Note that $v(x)$ isn't limited to the text of the article $x$. It could rely on additional meta data about the article (e.g. graphical embedding of the article).
+
+Additionally, unlike in the original RAG architecture, the text that is used to generate the representation of our context documents, $q(x)$, is different from the text that is passed down as input to the generator component. In the original RAG architecture and DPR works, the text used to generate the representation of documents and the text passed down as input to the generator component were the same.
 
 ![V1 Extended RAG](documentation-pics/outline-gen-framework-1.jpg)
 
-By formatting our architecture this way, we are forcing the Retreiver part of our architecture to learn to fetch similar / relevant documents, and the generator to create a summarized outline from the outlines of several similar documents. In a sense, this is like a learnable kNN model: the retriever learns to fetch similar documents based on some query embedding in a similar space (like fetching nearest neighbors), and the generator takes the outlines from these neighbors to generate the output (generating the output from the nearest-neighbors part). 
+By formatting our architecture this way, we are forcing the Retreiver part of our architecture to learn to fetch similar / relevant documents, and the generator to create a summarized outline from the outlines of several similar documents.
 
+In a sense, this is like a learnable kNN model: the retriever learns to fetch similar documents based on some query embedding in a similar space (like fetching nearest neighbors), and the generator takes the outlines from these neighbors to generate the output (comporable to how the output is generated by looking at nearest-neighbors in kNN).
 
 # Data Collection
-Training data was scraped from a subset of wikipedia articles related to Computer Science. In practice, the training articles can be on arbitrary topics. The initial data was obtained from by obtaining a list of Computer Science keywords (mined from places such as arXiV and Springer), and checking whether there was a Wikipedia article corresponding to that keyword. 
 
-Out of around 18,000 computer science wikipedia articles, 40% were used to populate the knowledge base. The reamining 60% were split in a 80-18-2 ratio for train-test-val data. 
+Our training data consisted of wikipedia articles related to Computer Science. In practice, the training articles can be on arbitrary topics. For each article, we collected
+
+- Article title
+- Article abstract
+- Top level subheadings
+
+The top level subheadings would be the article's target sequence.
+
+Articles were filtered by by obtaining a list of Computer Science keywords (mined from places such as arXiV and Springer), and checking whether there was a Wikipedia article corresponding to that keyword.
+
+Out of around 18,000 computer science wikipedia articles, 40% were used to populate the knowledge base. The reamining 60% were split in a 80-18-2 ratio for train-test-val data for training the actual RAG architecture.
+
+# Training
+
+For our additional representation $v(x)$, we used a word2vec model (trained by Edward Ma). Note that we only used the title of each article (corresponding to some computer science keyword) to look up the corresponding vector representation to get $v(x)$.
+
+Like the orignal RAG architecture, we keep the context representations fixed and finetune the question encoder as well as $W$ from the above equations. Training was done using the Adam optimizer.
+
+# Results
+
+In order to compare the generated subheadings with the ground truth subheadings, we used standard precision and recall metrics. Specifically, for a single article, we define
+
+- $Prec = \frac {\text{\# of intersecting headings}} {\# of generated headings}$
+
+- $Recall = \frac {\text{\# of intersecting headings}} {\text{\# of ground truth headings}}$
+
+It is quite easy to generate metrics for an entire testing dataset by summing up the quantities over all articles in the set and taking the appropriate ratios. For initial experiments, two subheadings were considered to match if they matched exactly.
+
+For ablation analysis, we also trained a model where only the modification of using different texts for representation and generator input in the encoding during the retrieval step was implemented.
+
+Since there was a variability between articles, and our exact-match criteria might be considered to restrictive (e.g. "Applications" would not match "Uses and Apllications"), precision and recall for our models was quite low . For future work, a possible way to make the comparison more relaxed is to somehow group all similar headings and classify headings as matching if they belong in the same group.
 
 # Pending work / Known Issues
 
-* Learning rate / decoding method for last trained model produces repetitve results.
+- Experiment with using Wikipedia2Vec for $v(x)$
 
-* Need to test on additional feature representations like word2vec. 
+- Use approximate matching when comparing generated subheadings to ground-truth subheadings
 
-* There was a second variant for extending the RAG that was never implemented / tested out. The main difference between this variant and the first variant was to pass in the word2vec embedding as the first token in the embedding layer of the BERT architecture.
+- Learning rate / decoding method for last trained model produces repetitve results.
+
+- Need to test on additional feature representations like word2vec.
+
+- There was a second variant for extending the RAG that was never implemented / tested out. The main difference between this variant and the first variant was to pass in the word2vec embedding as the first token in the embedding layer of the BERT architecture.
 
 ![V2 Extended RAG](documentation-pics/outline-gen-framework-2.jpg)
 
-
 # References
 
-* Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W.t., Rocktäschel, T., Riedel, S., & Kiela, D.. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.
+- Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W.t., Rocktäschel, T., Riedel, S., & Kiela, D.. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.
+
+- Mikolov, T., Chen, K., Corrado, G., & Dean, J.. (2013). Efficient Estimation of Word Representations in Vector Space.
+
+- Yamada, I., Shindo, H., Takeda, H., & Takefuji, Y. (2016). Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation. In Proceedings of The 20th SIGNLL Conference on Computational Natural Language Learning (pp. 250–259). Association for Computational Linguistics.

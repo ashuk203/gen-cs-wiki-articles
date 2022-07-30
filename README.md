@@ -1,1 +1,1 @@
-This module predicts the outline for an article given its title and a short sentence description about it.
+This module predicts the outline for an article given its title and a short sentence description about it. The below part contains details about how to run and setup the code. For a research report, please refer to [Research-report.md](Research-report.md)
