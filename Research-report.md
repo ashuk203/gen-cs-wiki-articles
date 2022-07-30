@@ -77,9 +77,9 @@ Like the orignal RAG architecture, we keep the context representations fixed and
 
 In order to compare the generated subheadings with the ground truth subheadings, we used standard precision and recall metrics. Specifically, for a single article, we define
 
-- $Prec = \frac {\text{\# of intersecting headings}} {\# of generated headings}$
+- $Prec = \frac {\text{num of intersecting headings}} {num of generated headings}$
 
-- $Recall = \frac {\text{\# of intersecting headings}} {\text{\# of ground truth headings}}$
+- $Recall = \frac {\text{num of intersecting headings}} {\text{num of ground truth headings}}$
 
 It is quite easy to generate metrics for an entire testing dataset by summing up the quantities over all articles in the set and taking the appropriate ratios. For initial experiments, two subheadings were considered to match if they matched exactly.
 
@@ -100,8 +100,6 @@ Since there was a variability between articles, and our exact-match criteria mig
 - There was a second variant for extending the RAG that was never implemented / tested out. The main difference between this variant and the first variant was to pass in the word2vec embedding as the first token in the embedding layer of the BERT architecture.
 
 ![V2 Extended RAG](documentation-pics/outline-gen-framework-2.jpg)
-
-[[11]](#11)
 
 # References
 
