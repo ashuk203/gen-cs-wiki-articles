@@ -143,7 +143,7 @@ Note that `src/hf-finetune-rag` is a modifed version of a training script repo f
 - `src/hf-finetune-rag/my_calc_performance.py`: calculate precision and recall after running evaluation script on testing data from above
 
 
-# Usage (Functional Design)
+# Usage (Functional Design) - In Progress
 
 Describe all functions / classes that will be available to users of your module. This section should be oriented towards users who want to _apply_ your module! This means that you should **not** include internal functions that won't be useful to the user in this section. You can think of this section as a documentation for the functions of your package. Be sure to also include a short description of what task each function is responsible for if it is not apparent. You only need to provide the outline of what your function will input and output. You do not need to write the pseudo code of the body of the functions.
 
@@ -166,7 +166,7 @@ Describe all functions / classes that will be available to users of your module.
         return W
 ```
 
-# Demo video
+# Demo video - In Progress
 
 Make sure to include a video showing your module in action and how to use it in this section. Github Pages doesn't support this so I am unable to do this here. However, this can be done in your README.md files of your own repo. Follow instructions [here](https://stackoverflow.com/questions/4279611/how-to-embed-a-video-into-github-readme-md) of the accepted answer
 
