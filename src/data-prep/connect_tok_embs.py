@@ -10,8 +10,7 @@ tok_embs_path = f"{data_root_dir}/ctx_tok2embs_dict.pickle"
 with open(embs_dict_path, 'rb') as f:
     word_to_emb = pickle.load(f)
 
-ctx_tokenizer = DPRContextEncoderTokenizerFast.from_pretrained("facebook/dpr-ctx_encoder-single-nq-base")
-tokenizer = ctx_tokenizer
+tokenizer = DPRContextEncoderTokenizerFast.from_pretrained("facebook/dpr-ctx_encoder-single-nq-base")
 # tokenizer = DPRQuestionEncoderTokenizer.from_pretrained("facebook/dpr-question_encoder-single-nq-base")
 
 

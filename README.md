@@ -145,26 +145,53 @@ Note that `src/hf-finetune-rag` is a modifed version of a training script repo f
 
 # Usage (Functional Design) - In Progress
 
-Describe all functions / classes that will be available to users of your module. This section should be oriented towards users who want to _apply_ your module! This means that you should **not** include internal functions that won't be useful to the user in this section. You can think of this section as a documentation for the functions of your package. Be sure to also include a short description of what task each function is responsible for if it is not apparent. You only need to provide the outline of what your function will input and output. You do not need to write the pseudo code of the body of the functions.
+In order to train scrape the data and train the model, follow these steps:
 
-- Takes as input a list of strings, each representing a document and outputs confidence scores for each possible class / field in a dictionary
+## Download and prepare data 
 
-```python
-    def classify_docs(docs: list[str]):
-        ...
-        return [
-            { 'cs': cs_score, 'math': math_score, ..., 'chemistry': chemistry_score },
-            ...
-        ]
-```
 
-- Outputs the weights as a numpy array of shape `(num_classes, num_features)` of the trained neural network
+1. Download the extract all of the following files (into a location with plenty of memory):
+    * data.zip [(download from Google Drive)](https://drive.google.com/file/d/1JM2wofuZJA-Z9d7h68DbYQAVx7SaB-jo/view?usp=sharing)
+    * rag-ft-models.zip [(download from Google Drive)](placeholder)
+    * word2vec.model.zip [(download from Google Drive)](https://drive.google.com/file/d/1Wey6ZCVtkO6JwrDYcmII5kMjaMkSCqfA/view?usp=sharing)
+    * article_jsons.txt.zip [(download from Google Drive)](https://drive.google.com/file/d/1VFocNoAlg4ehshXBDcOwxxiAWurgGVtR/view?usp=sharing)
 
-```python
-    def get_nn_weights():
-        ...
-        return W
-```
+    Keep a note of these folder paths as you may need to certain fields in the below steps with these paths. 
+
+2. Create a directory called `word2vec_embs`
+
+3. In `src/data-prep/store_embeddings.py`, set the values of the variables to the following values:
+    * `docs_path`: path to article_jsons.txt
+    * `model_path`: path to word2vec.model
+    * `embs_out_path`: some path for output w2v_embs_dict.pickle
+
+    and run
+
+    ```bash
+    python3 src/data-prep/store_embeddings.py
+    ```
+
+4. Run `src/data-prep/connect_tok_embs.py` twice, once with line 13 uncommented and line 14 commeted with 
+    * `tok_embs_path`: some path for output w2v_embs_dict.pickle
+
+    and once with line 13 commented and line 14 uncommeted with 
+
+    * `tok_embs_path`: some path for output ctx_w2v_embs_dict.pickle
+
+    In both runs, set 
+        
+    * `embs_dict_path`: path to w2v_embs_dict.pickle from before steps
+
+5. Run `src/data-prep/create_index_and_split.py` with
+    * `embs_dict_path`: path to tok2embs_dict.pickle
+    * `articles_file`: path to article_jsons.txt
+    * `docs_out_file`: some path for output docs_40_w2v.csv 
+    * `train_data_dir`: some path to a new directory for training data, e.g. cs_train_data_w2v
+
+
+## Create Knowledge Base FAISS Index and Train
+
+
 
 # Demo video - In Progress
 
