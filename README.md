@@ -161,7 +161,7 @@ The below steps outline what you would need to do for a fully customized trainin
 
 ## Prepare data 
 
-3. In `src/data-prep/store_embeddings.py`, set the values of the variables to the following values:
+1. In `src/data-prep/store_embeddings.py`, set the values of the variables to the following values:
     * `docs_path`: path to `article_jsons.txt`
     * `model_path`: path to `word2vec.model`
     * `embs_out_path`: some path output for output `w2v_embs_dict.pickle`
@@ -172,7 +172,7 @@ The below steps outline what you would need to do for a fully customized trainin
     python3 src/data-prep/store_embeddings.py
     ```
 
-4. Run `src/data-prep/connect_tok_embs.py` twice, once with line 13 uncommented and line 14 commeted with 
+2. Run `src/data-prep/connect_tok_embs.py` twice, once with line 13 uncommented and line 14 commeted with 
     * `tok_embs_path`: some path output for `w2v_embs_dict.pickle`
 
     and once with line 13 commented and line 14 uncommeted with 
@@ -183,7 +183,7 @@ The below steps outline what you would need to do for a fully customized trainin
         
     * `embs_dict_path`: path to `w2v_embs_dict.pickle` from before steps
 
-5. Run `src/data-prep/create_index_and_split.py` with
+3. Run `src/data-prep/create_index_and_split.py` with
     * `embs_dict_path`: path to `tok2embs_dict.pickle`
     * `articles_file`: path to `article_jsons.txt`
     * `docs_out_file`: some path for output to `docs_40_w2v.csv`
@@ -191,7 +191,7 @@ The below steps outline what you would need to do for a fully customized trainin
 
 ## Optional: Create a Custom RAG architecture PyTorch module
 
-6. Modify the below files to make any architectural changes to the question encoder, knowledge base index, context encoder, and/or generator. You can also make any other additions / deletions to the RAG architecture. 
+4. Modify the below files to make any architectural changes to the question encoder, knowledge base index, context encoder, and/or generator. You can also make any other additions / deletions to the RAG architecture. 
     * `src/hf-finetune-rag/my_use_own_knowledge_dataset.py`
     * `src/hf-finetune-rag/my_use_own_knowledge_dataset.sh`
     * `src/custom_qencoder.py`
@@ -200,12 +200,12 @@ The below steps outline what you would need to do for a fully customized trainin
 
     By default, the model with word2vec augmented embeddings for the question encoder and context encoder is used. 
 
-7. In `src/hf-finetune-rag/my_consolidate_rag.sh`, set
+5. In `src/hf-finetune-rag/my_consolidate_rag.sh`, set
     * ` --dest`: some path to the w2v_aug_rag directory (containing custom architecture files)
 
 ## Create Knowledge Base FAISS Index and Train
 
-8. Inside the folder `src/hf-finetune-rag`, in `my_use_own_knowledge_dataset.py`, set:
+6. Inside the folder `src/hf-finetune-rag`, in `my_use_own_knowledge_dataset.py`, set:
 
     * `embs_dict_path`: path to `ctx_tok2embs_dict.pickle`
 
@@ -220,7 +220,7 @@ The below steps outline what you would need to do for a fully customized trainin
     source src/hf-finetune-rag/my_use_own_knowledge_dataset.sh
     ```
 
-9. In `src/hf-finetune-rag/my_finetune_rag_ray.sh`, set 
+7. In `src/hf-finetune-rag/my_finetune_rag_ray.sh`, set 
 
     * `DATA_DIR`: path to `cs_train_data_w2v` directory
     * `MODEL_NAME_OR_PATH`: path to `w2v_aug_rag`
@@ -236,7 +236,7 @@ The below steps outline what you would need to do for a fully customized trainin
 
 ## Test and Evaluate Finetuned Model [Experimental Scripts]
 
-10. To run the model on a few test inputs, in `src/hf-finetune-rag/my_inference_demo.py`, set
+8. To run the model on a few test inputs, in `src/hf-finetune-rag/my_inference_demo.py`, set
     * `model_root_dir`: path to `w2v_kb_qenc`
 
     and run
@@ -244,17 +244,17 @@ The below steps outline what you would need to do for a fully customized trainin
     python my_inference_demo.py
     ```
 
-11. [Experimental] To run the model on all of the test data, run `src/hf-finetune-rag/my_eval_rag.py`. 
+9. [Experimental] To run the model on all of the test data, run `src/hf-finetune-rag/my_eval_rag.py`. 
 
 
-12. [Experimental] To calculate metrics like precision and recall of the generated outlines vs the 
+10. [Experimental] To calculate metrics like precision and recall of the generated outlines, run `src/hf-finetune-rag/my_calc_performance.py`
 
-Warning: this experimental steps need to be refactored to load the model in correctly. Step 10 correctly loads in the model (in `my_inference_demo.py`), so refer and copy paste the correct code in the experimental files
+Warning: this experimental steps need to be refactored to load the model in correctly. Step 8 correctly loads in the model (in `my_inference_demo.py`), so refer and copy paste the correct code in the experimental files
 
 
 # Demo video - In Progress
 
-Make sure to include a video showing your module in action and how to use it in this section. Github Pages doesn't support this so I am unable to do this here. However, this can be done in your README.md files of your own repo. Follow instructions [here](https://stackoverflow.com/questions/4279611/how-to-embed-a-video-into-github-readme-md) of the accepted answer
+https://youtu.be/7hJqjkSTey4
 
 # Methodology (Algorithmic Design)
 
