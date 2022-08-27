@@ -1,4 +1,6 @@
-This module predicts the outline for an article given its title and a short sentence description about it. The below part contains details about how to run and setup the code. For a research report, please refer to [Research-report.md](Research-report.md)
+This module predicts the outline for an article given its title and a short sentence description about it. The README file contains details about how to setup and run the code. 
+
+For a research report, please refer to [Research-report.md](Research-report.md)
 
 # Setup
 
@@ -16,9 +18,15 @@ CUDA Version: 11.4
    pip install -r src/hf-finetune-rag/requirements.txt
    ```
 
-2. Download and expand the zipped `data` folder in the root folder of this repo from this [Google drive link](https://drive.google.com/file/d/1JM2wofuZJA-Z9d7h68DbYQAVx7SaB-jo/view?usp=sharing)
+2. Download the extract all of the following files (into a location with plenty of memory):
+    * data.zip [(download from Google Drive)](https://drive.google.com/file/d/1JM2wofuZJA-Z9d7h68DbYQAVx7SaB-jo/view?usp=sharing)
+    * rag-ft-models.zip [~20G] [(download from Google Drive)](https://drive.google.com/file/d/1htTRYSFnHxLO2CypaC8YQvykW2m_BFRa/view?usp=sharing)
+    * word2vec.model.zip [(download from Google Drive)](https://drive.google.com/file/d/1Wey6ZCVtkO6JwrDYcmII5kMjaMkSCqfA/view?usp=sharing)
+    * article_jsons.txt.zip [(download from Google Drive)](https://drive.google.com/file/d/1VFocNoAlg4ehshXBDcOwxxiAWurgGVtR/view?usp=sharing)
 
-3. Similarly, download and expand the zipped `models` folder: [Google drive link](placeholder)
+    Keep a note of these folder paths as you may need to certain fields in the below steps with these paths. 
+
+3. Rename the `rag-ft-models` to `models`. Create an empty directory called `word2vec_embs`
 
 It is very important to also include an overall breakdown of your repo's file structure. Let people know what is in each directory and where to look if they need something specific. This will also let users know how your repo needs to structured so that your module can work properly
 
@@ -143,22 +151,13 @@ Note that `src/hf-finetune-rag` is a modifed version of a training script repo f
 - `src/hf-finetune-rag/my_calc_performance.py`: calculate precision and recall after running evaluation script on testing data from above
 
 
-# Usage (Functional Design) - In Progress
+# Usage (Functional Design)
 
-In order to train scrape the data and train the model, follow these steps:
+Note: a lot of these steps can be skipped if you are okay with using the default data / model / trainer corresponding to that step. A lot of the results of these steps is already present in the above folders.
 
-## Download and prepare data 
+The below steps outline what you would need to do for a fully customized training pipeline:
 
-
-1. Download the extract all of the following files (into a location with plenty of memory):
-    * data.zip [(download from Google Drive)](https://drive.google.com/file/d/1JM2wofuZJA-Z9d7h68DbYQAVx7SaB-jo/view?usp=sharing)
-    * rag-ft-models.zip [(download from Google Drive)](placeholder)
-    * word2vec.model.zip [(download from Google Drive)](https://drive.google.com/file/d/1Wey6ZCVtkO6JwrDYcmII5kMjaMkSCqfA/view?usp=sharing)
-    * article_jsons.txt.zip [(download from Google Drive)](https://drive.google.com/file/d/1VFocNoAlg4ehshXBDcOwxxiAWurgGVtR/view?usp=sharing)
-
-    Keep a note of these folder paths as you may need to certain fields in the below steps with these paths. 
-
-2. Create a directory called `word2vec_embs`
+## Prepare data 
 
 3. In `src/data-prep/store_embeddings.py`, set the values of the variables to the following values:
     * `docs_path`: path to article_jsons.txt
@@ -188,8 +187,51 @@ In order to train scrape the data and train the model, follow these steps:
     * `docs_out_file`: some path for output docs_40_w2v.csv 
     * `train_data_dir`: some path to a new directory for training data, e.g. cs_train_data_w2v
 
+## Optional: Create a Custom RAG architecture PyTorch module
+
+6. Modify the below files to make any architectural changes to the question encoder, knowledge base index, context encoder, and/or generator. You can also make any other additions / deletions to the RAG architecture. 
+    * `src/hf-finetune-rag/my_use_own_knowledge_dataset.py`
+    * `src/hf-finetune-rag/my_use_own_knowledge_dataset.sh`
+    * `src/custom_qencoder.py`
+    * `src/hf-finetune-rag/consolidate_rag_checkpoint.py`
+    * `src/hf-finetune-rag/my_consolidate_rag.sh`
+
+    By default, the model with word2vec augmented embeddings for the question encoder and context encoder is used. 
+
+7. In `src/hf-finetune-rag/my_consolidate_rag.sh`, set
+    * ` --dest`: some path to the w2v_aug_rag directory (containing custom architecture files)
 
 ## Create Knowledge Base FAISS Index and Train
+
+8. Inside the folder `src/hf-finetune-rag`, in `my_use_own_knowledge_dataset.py`, set:
+
+    * `embs_dict_path`: path to ctx_tok2embs_dict.pickle
+
+    and in `my_use_own_knowledge_dataset.sh`, set
+
+    * `INP_DOCS_FILE`: path to docs_40_w2v.csv
+
+    * `OUT_DIR`: some path to cs_docs_index_w2v
+
+    Then run 
+
+    ```bash
+    source src/hf-finetune-rag/my_use_own_knowledge_dataset.sh
+    ```
+
+9. In `src/hf-finetune-rag/my_finetune_rag_ray.sh`, set 
+
+    * `DATA_DIR`: path to cs_train_data_w2v directory
+    * `MODEL_NAME_OR_PATH`: path to w2v_aug_rag
+    * `OUTPUT_DIR`: some path to w2v_kb_qenc (files for the finetuned RAG model)
+    
+    You may need to also modify `MODEL_TYPE` depending on if you customized your RAG architecture.
+
+    then finetune the model by running
+
+    ```bash
+    source src/hf-finetune-rag/finetune_rag_ray.sh
+    ```
 
 
 
@@ -203,9 +245,5 @@ See [Research-report.md](Research-report.md)
 
 # Issues and Future Work
 
-In this section, please list all know issues, limitations, and possible areas for future improvement. For example:
+See [Research-report.md](Research-report.md)
 
-- High false negative rate for document classier.
-- Over 10 min run time for one page text.
-- Replace linear text search with a more efficient text indexing library (such as whoosh)
-- Include an extra label of "no class" if all confidence scores low.
