@@ -153,16 +153,18 @@ Note that `src/hf-finetune-rag` is a modifed version of a training script repo f
 
 # Usage (Functional Design)
 
-Note: a lot of these steps can be skipped if you are okay with using the default data / model / trainer corresponding to that step. A lot of the results of these steps is already present in the above folders.
+Note: a lot of these steps can be skipped if you are okay with using the default data / model / trainer corresponding to that step. Most of the outputs for each step are already present in the above Google drive zip folders. 
+
+Also, you do not have to follow the exact input / output file names listed in the steps. Just make sure to keep the file names consistent across the steps if you choose different file paths.
 
 The below steps outline what you would need to do for a fully customized training pipeline:
 
 ## Prepare data 
 
 3. In `src/data-prep/store_embeddings.py`, set the values of the variables to the following values:
-    * `docs_path`: path to article_jsons.txt
-    * `model_path`: path to word2vec.model
-    * `embs_out_path`: some path for output w2v_embs_dict.pickle
+    * `docs_path`: path to `article_jsons.txt`
+    * `model_path`: path to `word2vec.model`
+    * `embs_out_path`: some path output for output `w2v_embs_dict.pickle`
 
     and run
 
@@ -171,21 +173,21 @@ The below steps outline what you would need to do for a fully customized trainin
     ```
 
 4. Run `src/data-prep/connect_tok_embs.py` twice, once with line 13 uncommented and line 14 commeted with 
-    * `tok_embs_path`: some path for output w2v_embs_dict.pickle
+    * `tok_embs_path`: some path output for `w2v_embs_dict.pickle`
 
     and once with line 13 commented and line 14 uncommeted with 
 
-    * `tok_embs_path`: some path for output ctx_w2v_embs_dict.pickle
+    * `tok_embs_path`: some path for output for `ctx_w2v_embs_dict.pickle`
 
     In both runs, set 
         
-    * `embs_dict_path`: path to w2v_embs_dict.pickle from before steps
+    * `embs_dict_path`: path to `w2v_embs_dict.pickle` from before steps
 
 5. Run `src/data-prep/create_index_and_split.py` with
-    * `embs_dict_path`: path to tok2embs_dict.pickle
-    * `articles_file`: path to article_jsons.txt
-    * `docs_out_file`: some path for output docs_40_w2v.csv 
-    * `train_data_dir`: some path to a new directory for training data, e.g. cs_train_data_w2v
+    * `embs_dict_path`: path to `tok2embs_dict.pickle`
+    * `articles_file`: path to `article_jsons.txt`
+    * `docs_out_file`: some path for output to `docs_40_w2v.csv`
+    * `train_data_dir`: some path to a new directory for training data output, e.g. `cs_train_data_w2v`
 
 ## Optional: Create a Custom RAG architecture PyTorch module
 
@@ -205,13 +207,12 @@ The below steps outline what you would need to do for a fully customized trainin
 
 8. Inside the folder `src/hf-finetune-rag`, in `my_use_own_knowledge_dataset.py`, set:
 
-    * `embs_dict_path`: path to ctx_tok2embs_dict.pickle
+    * `embs_dict_path`: path to `ctx_tok2embs_dict.pickle`
 
     and in `my_use_own_knowledge_dataset.sh`, set
 
-    * `INP_DOCS_FILE`: path to docs_40_w2v.csv
-
-    * `OUT_DIR`: some path to cs_docs_index_w2v
+    * `INP_DOCS_FILE`: path to `docs_40_w2v.csv`
+    * `OUT_DIR`: some path output for `cs_docs_index_w2v`
 
     Then run 
 
@@ -221,9 +222,9 @@ The below steps outline what you would need to do for a fully customized trainin
 
 9. In `src/hf-finetune-rag/my_finetune_rag_ray.sh`, set 
 
-    * `DATA_DIR`: path to cs_train_data_w2v directory
-    * `MODEL_NAME_OR_PATH`: path to w2v_aug_rag
-    * `OUTPUT_DIR`: some path to w2v_kb_qenc (files for the finetuned RAG model)
+    * `DATA_DIR`: path to `cs_train_data_w2v` directory
+    * `MODEL_NAME_OR_PATH`: path to `w2v_aug_rag`
+    * `OUTPUT_DIR`: some path to `w2v_kb_qenc` (files for the finetuned RAG model)
     
     You may need to also modify `MODEL_TYPE` depending on if you customized your RAG architecture.
 
@@ -233,6 +234,22 @@ The below steps outline what you would need to do for a fully customized trainin
     source src/hf-finetune-rag/finetune_rag_ray.sh
     ```
 
+## Test and Evaluate Finetuned Model [Experimental Scripts]
+
+10. To run the model on a few test inputs, in `src/hf-finetune-rag/my_inference_demo.py`, set
+    * `model_root_dir`: path to `w2v_kb_qenc`
+
+    and run
+    ```bash
+    python my_inference_demo.py
+    ```
+
+11. [Experimental] To run the model on all of the test data, run `src/hf-finetune-rag/my_eval_rag.py`. 
+
+
+12. [Experimental] To calculate metrics like precision and recall of the generated outlines vs the 
+
+Warning: this experimental steps need to be refactored to load the model in correctly. Step 10 correctly loads in the model (in `my_inference_demo.py`), so refer and copy paste the correct code in the experimental files
 
 
 # Demo video - In Progress
