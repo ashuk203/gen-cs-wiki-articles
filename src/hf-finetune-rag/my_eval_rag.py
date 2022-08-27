@@ -190,6 +190,7 @@ if __name__ == "__main__":
     with open(model_args_file, 'rb') as f:
         args = pickle.load(f)
 
+    # Load RAG model
     e2e_args = get_args()
 
     model = GenerativeQAModule(args)
@@ -199,21 +200,12 @@ if __name__ == "__main__":
     rag_model = model.model.cuda()
     
     print(e2e_args)
-    # pdb.set_trace()
 
-    # answers = evaluate_batch_e2e(e2e_args, rag_model, test_qs)
-    # print(answers)
 
-    # Evaluate on test data
-    # num_test = 60
+    ##  Run RAG model on test data   ##
 
     with open(f"{train_data_dir}/test.source") as f:
         inps = f.readlines()
-        # inps = inps[:num_test]
-    
-    # with open(f"{train_data_dir}/test.target") as f:
-    #     truth_outlines = f.readlines()
-        # truth_outlines = truth_outlines[:num_test]
 
     print("Generating outlines for", len(inps), "examples")
     model_outlines = []
@@ -225,13 +217,6 @@ if __name__ == "__main__":
         cur_outls = evaluate_batch_e2e(e2e_args, rag_model, cur_batch_qs)
         model_outlines += cur_outls
 
-
     with open(f"{train_data_dir}/test.model_predicted", "w") as f:
         for outl in model_outlines:
             f.write(outl + '\n')
-
-    # print("Results (model outlines first)")
-    # for i in range(len(inps)):
-    #     print("Outline comparison for", inps[i].split(':')[0])
-    #     print('\t- ', model_outlines[i])
-    #     print('\t- ', truth_outlines[i])

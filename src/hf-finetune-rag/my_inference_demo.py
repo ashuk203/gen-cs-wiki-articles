@@ -26,7 +26,7 @@ if is_ray_available():
 # One of {"rag_token", "rag_base"}
 model_type = "rag_token"
 
-model_root_dir = "/scratch/aukey2/rag-ft-models/test/w2v_aug_qenc_kb/save_pretrained_ashu"
+model_root_dir = "/scratch/aukey2/rag-ft-models/test/w2v_aug_qenc_kb"
 model_args_file = f"{model_root_dir}/model_args.pkl"
 model_state_dict_file = f"{model_root_dir}/rag.model"
 

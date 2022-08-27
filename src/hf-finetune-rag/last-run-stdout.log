@@ -1,2293 +1,0 @@
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-Could not locate the tokenizer configuration file, will try to use the model config instead.
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/vocab.txt from cache at /home/aukey2/.cache/huggingface/transformers/3879c7c405bfc40d6ea0389e50d155bf1b5e187be9d03628cb73edd70e286cc2.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/tokenizer.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/added_tokens.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/special_tokens_map.json from cache at /home/aukey2/.cache/huggingface/transformers/724fab205b381771203b8d24ba291b89e97c6f23ff59a5a812fe51fb6749a9d6.dd8bd9bfd3664b530ea4e645105f557769387b3da9f79bdb55ed556bdd80611d
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/tokenizer_config.json from cache at /home/aukey2/.cache/huggingface/transformers/3e8685a794dde2dfbd7101ede456c019cd05b567b027d531286453fc672a3d58.76ea01b4b85ac16e2cec55c398cba7a943d89ab21dfdd973f6630a152e4b9aed
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-Could not locate the tokenizer configuration file, will try to use the model config instead.
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/vocab.json from cache at /home/aukey2/.cache/huggingface/transformers/66f3c604c5b33e391c5c4d317adb97b30fed7bfd913958fdcc549ce839079539.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/merges.txt from cache at /home/aukey2/.cache/huggingface/transformers/f56124c726e8b2c8fea1c3f68c480c657049bc7fdd50c512ca5169ab4992d400.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/tokenizer.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/added_tokens.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/special_tokens_map.json from cache at /home/aukey2/.cache/huggingface/transformers/5fc8f41034557bf588e01e1d328d4546ef1d782b68cf63a66a63b70429d81341.cb2244924ab24d706b02fd7fcedaea4531566537687a539ebb94db511fd122a0
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/tokenizer_config.json from cache at /home/aukey2/.cache/huggingface/transformers/64a080ca510a04aedfcfc8243f8e0ad86d74e81a44c25015f1e93ceb3df568b1.67d01b18f2079bd75eac0b2f2e7235768c7f26bd728e7a855a1c5acae01a91a8
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'BartTokenizer'.
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'BartTokenizerFast'.
-Loading passages from /home/aukey2/gen-cs-wiki-articles/rag_branch/data/cs_docs_index/my_knowledge_dataset
-loading weights file https://huggingface.co/facebook/rag-sequence-base/resolve/main/pytorch_model.bin from cache at /home/aukey2/.cache/huggingface/transformers/34d1d94d535e98dce6cf555476ba5a02dc3a7cfbaf1f2b9d00a92fb58b751313.7ea44c4e4d548fa3b46b8f38b8fcc940b07aa074ed8434c0017641a92a58b344
-Some weights of the model checkpoint at facebook/rag-sequence-base were not used when initializing RagSequenceForGeneration: ['rag.question_encoder.question_encoder.bert_model.pooler.dense.bias', 'rag.question_encoder.question_encoder.bert_model.pooler.dense.weight']
-- This IS expected if you are initializing RagSequenceForGeneration from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing RagSequenceForGeneration from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of RagSequenceForGeneration were not initialized from the model checkpoint at facebook/rag-sequence-base and are newly initialized: ['rag.generator.lm_head.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-Could not locate the tokenizer configuration file, will try to use the model config instead.
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/vocab.txt from cache at /home/aukey2/.cache/huggingface/transformers/3879c7c405bfc40d6ea0389e50d155bf1b5e187be9d03628cb73edd70e286cc2.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/tokenizer.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/added_tokens.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/special_tokens_map.json from cache at /home/aukey2/.cache/huggingface/transformers/724fab205b381771203b8d24ba291b89e97c6f23ff59a5a812fe51fb6749a9d6.dd8bd9bfd3664b530ea4e645105f557769387b3da9f79bdb55ed556bdd80611d
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/question_encoder_tokenizer/tokenizer_config.json from cache at /home/aukey2/.cache/huggingface/transformers/3e8685a794dde2dfbd7101ede456c019cd05b567b027d531286453fc672a3d58.76ea01b4b85ac16e2cec55c398cba7a943d89ab21dfdd973f6630a152e4b9aed
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-Could not locate the tokenizer configuration file, will try to use the model config instead.
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/vocab.json from cache at /home/aukey2/.cache/huggingface/transformers/66f3c604c5b33e391c5c4d317adb97b30fed7bfd913958fdcc549ce839079539.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/merges.txt from cache at /home/aukey2/.cache/huggingface/transformers/f56124c726e8b2c8fea1c3f68c480c657049bc7fdd50c512ca5169ab4992d400.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/tokenizer.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/added_tokens.json from cache at None
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/special_tokens_map.json from cache at /home/aukey2/.cache/huggingface/transformers/5fc8f41034557bf588e01e1d328d4546ef1d782b68cf63a66a63b70429d81341.cb2244924ab24d706b02fd7fcedaea4531566537687a539ebb94db511fd122a0
-loading file https://huggingface.co/facebook/rag-sequence-base/resolve/main/generator_tokenizer/tokenizer_config.json from cache at /home/aukey2/.cache/huggingface/transformers/64a080ca510a04aedfcfc8243f8e0ad86d74e81a44c25015f1e93ceb3df568b1.67d01b18f2079bd75eac0b2f2e7235768c7f26bd728e7a855a1c5acae01a91a8
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'BartTokenizer'.
-loading configuration file https://huggingface.co/facebook/rag-sequence-base/resolve/main/config.json from cache at /home/aukey2/.cache/huggingface/transformers/de3f81dcd7bb9d87f2c59f2cd9ea0d46ec489dad39770dcb15fd2268563efefb.5a185431bc5a17de6e9f34bbb6365ec34b3fb10aa88af46822a773b8a440dab7
-Model config RagConfig {
-  "_name_or_path": "facebook/rag-sequence-base",
-  "architectures": [
-    "RagSequenceForGeneration"
-  ],
-  "dataset": "wiki_dpr",
-  "dataset_split": "train",
-  "do_deduplication": true,
-  "do_marginalize": false,
-  "doc_sep": " // ",
-  "exclude_bos_score": false,
-  "forced_eos_token_id": 2,
-  "generator": {
-    "_name_or_path": "",
-    "_num_labels": 3,
-    "activation_dropout": 0.0,
-    "activation_function": "gelu",
-    "add_bias_logits": false,
-    "add_cross_attention": false,
-    "add_final_layer_norm": false,
-    "architectures": [
-      "BartModel",
-      "BartForMaskedLM",
-      "BartForSequenceClassification"
-    ],
-    "attention_dropout": 0.0,
-    "bad_words_ids": null,
-    "bos_token_id": 0,
-    "chunk_size_feed_forward": 0,
-    "classif_dropout": 0.0,
-    "classifier_dropout": 0.0,
-    "cross_attention_hidden_size": null,
-    "d_model": 1024,
-    "decoder_attention_heads": 16,
-    "decoder_ffn_dim": 4096,
-    "decoder_layerdrop": 0.0,
-    "decoder_layers": 12,
-    "decoder_start_token_id": 2,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "dropout": 0.1,
-    "early_stopping": false,
-    "encoder_attention_heads": 16,
-    "encoder_ffn_dim": 4096,
-    "encoder_layerdrop": 0.0,
-    "encoder_layers": 12,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": 2,
-    "exponential_decay_length_penalty": null,
-    "extra_pos_embeddings": 2,
-    "finetuning_task": null,
-    "force_bos_token_to_be_generated": false,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": 2,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
-    },
-    "init_std": 0.02,
-    "is_decoder": false,
-    "is_encoder_decoder": true,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1,
-      "LABEL_2": 2
-    },
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 1024,
-    "min_length": 0,
-    "model_type": "bart",
-    "no_repeat_ngram_size": 0,
-    "normalize_before": false,
-    "normalize_embedding": true,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_past": false,
-    "output_scores": false,
-    "pad_token_id": 1,
-    "prefix": " ",
-    "problem_type": null,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "scale_embedding": false,
-    "sep_token_id": null,
-    "static_position_embeddings": false,
-    "task_specific_params": {
-      "summarization": {
-        "early_stopping": true,
-        "length_penalty": 2.0,
-        "max_length": 142,
-        "min_length": 56,
-        "no_repeat_ngram_size": 3,
-        "num_beams": 4
-      }
-    },
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 50265
-  },
-  "index_name": "exact",
-  "index_path": null,
-  "is_encoder_decoder": true,
-  "label_smoothing": 0.0,
-  "max_combined_length": 300,
-  "model_type": "rag",
-  "n_docs": 5,
-  "output_retrieved": false,
-  "passages_path": null,
-  "question_encoder": {
-    "_name_or_path": "",
-    "add_cross_attention": false,
-    "architectures": [
-      "DPRQuestionEncoder"
-    ],
-    "attention_probs_dropout_prob": 0.1,
-    "bad_words_ids": null,
-    "bos_token_id": null,
-    "chunk_size_feed_forward": 0,
-    "cross_attention_hidden_size": null,
-    "decoder_start_token_id": null,
-    "diversity_penalty": 0.0,
-    "do_sample": false,
-    "early_stopping": false,
-    "encoder_no_repeat_ngram_size": 0,
-    "eos_token_id": null,
-    "exponential_decay_length_penalty": null,
-    "finetuning_task": null,
-    "forced_bos_token_id": null,
-    "forced_eos_token_id": null,
-    "gradient_checkpointing": false,
-    "hidden_act": "gelu",
-    "hidden_dropout_prob": 0.1,
-    "hidden_size": 768,
-    "id2label": {
-      "0": "LABEL_0",
-      "1": "LABEL_1"
-    },
-    "initializer_range": 0.02,
-    "intermediate_size": 3072,
-    "is_decoder": false,
-    "is_encoder_decoder": false,
-    "label2id": {
-      "LABEL_0": 0,
-      "LABEL_1": 1
-    },
-    "layer_norm_eps": 1e-12,
-    "length_penalty": 1.0,
-    "max_length": 20,
-    "max_position_embeddings": 512,
-    "min_length": 0,
-    "model_type": "dpr",
-    "no_repeat_ngram_size": 0,
-    "num_attention_heads": 12,
-    "num_beam_groups": 1,
-    "num_beams": 1,
-    "num_hidden_layers": 12,
-    "num_return_sequences": 1,
-    "output_attentions": false,
-    "output_hidden_states": false,
-    "output_scores": false,
-    "pad_token_id": 0,
-    "position_embedding_type": "absolute",
-    "prefix": null,
-    "problem_type": null,
-    "projection_dim": 0,
-    "pruned_heads": {},
-    "remove_invalid_values": false,
-    "repetition_penalty": 1.0,
-    "return_dict": false,
-    "return_dict_in_generate": false,
-    "sep_token_id": null,
-    "task_specific_params": null,
-    "temperature": 1.0,
-    "tie_encoder_decoder": false,
-    "tie_word_embeddings": true,
-    "tokenizer_class": null,
-    "top_k": 50,
-    "top_p": 1.0,
-    "torch_dtype": null,
-    "torchscript": false,
-    "transformers_version": "4.18.0",
-    "type_vocab_size": 2,
-    "typical_p": 1.0,
-    "use_bfloat16": false,
-    "use_cache": true,
-    "vocab_size": 30522
-  },
-  "reduce_loss": false,
-  "retrieval_batch_size": 8,
-  "retrieval_vector_size": 768,
-  "title_sep": " / ",
-  "transformers_version": null,
-  "use_cache": true,
-  "use_dummy_dataset": false,
-  "vocab_size": null
-}
-
-The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
-The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
-The class this function is called from is 'BartTokenizerFast'.
-INFO:torch.distributed.nn.jit.instantiator:Created a temporary directory at /tmp/tmp56juj39i
-INFO:torch.distributed.nn.jit.instantiator:Writing /tmp/tmp56juj39i/_remote_module_non_sriptable.py
-INFO:distributed_ray_retriever:initializing retrieval
-Loading index from /home/aukey2/gen-cs-wiki-articles/rag_branch/data/cs_docs_index/my_knowledge_dataset_hnsw_index.faiss
-Global seed set to 42
-/home/aukey2/anaconda3/envs/genart_rag/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/callback_connector.py:167: LightningDeprecationWarning: Setting `Trainer(weights_summary=None)` is deprecated in v1.5 and will be removed in v1.7. Please set `Trainer(enable_model_summary=False)` instead.
-  rank_zero_deprecation(
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
-/home/aukey2/.local/lib/python3.8/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
-  warnings.warn(
-/home/aukey2/anaconda3/envs/genart_rag/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/aukey2/gen-cs-wiki-articles/rag_branch/models/test/kb_ft_rag exists and is not empty.
-  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
-INFO:distributed_ray_retriever:initializing retrieval
-Hey args upd8
-Namespace(accelerator=None, accumulate_grad_batches=1, actor_handles=[], adafactor=False, adam_epsilon=1e-08, amp_backend='native', amp_level=None, attention_dropout=0.1, auto_lr_find=False, auto_scale_batch_size=False, auto_select_gpus=False, benchmark=False, cache_dir='', check_val_every_n_epoch=1, checkpoint_callback=None, config_name='', data_dir='/home/aukey2/gen-cs-wiki-articles/rag_branch/data/cs_train_data', decoder_layerdrop=None, default_root_dir=None, detect_anomaly=False, deterministic=False, devices=None, distributed_port=-1, distributed_retriever='ray', do_predict=False, do_train=True, dropout=0.1, early_stopping_patience=-1, enable_checkpointing=True, enable_model_summary=True, enable_progress_bar=True, encoder_layerdrop=None, eval_batch_size=1, fast_dev_run=False, flush_logs_every_n_steps=None, fp16=False, fp16_opt_level='O2', gpus=1, gradient_clip_algorithm=None, gradient_clip_val=0.1, index_name='custom', index_path='/home/aukey2/gen-cs-wiki-articles/rag_branch/data/cs_docs_index/my_knowledge_dataset_hnsw_index.faiss', ipus=None, label_smoothing=0.1, learning_rate=3e-05, limit_predict_batches=1.0, limit_test_batches=1.0, limit_train_batches=1.0, limit_val_batches=1.0, log_every_n_steps=50, log_gpu_memory=None, logger=True, logger_name='default', lr_scheduler='polynomial', max_epochs=1, max_source_length=128, max_steps=-1, max_target_length=25, max_time=None, min_epochs=None, min_steps=None, model_name_or_path='facebook/rag-sequence-base', model_type='rag_sequence', move_metrics_to_cpu=False, multiple_trainloader_mode='max_size_cycle', n_test=-1, n_train=-1, n_val=-1, num_nodes=1, num_processes=1, num_retrieval_workers=1, num_sanity_val_steps=2, num_workers=4, output_dir='/home/aukey2/gen-cs-wiki-articles/rag_branch/models/test/kb_ft_rag', overfit_batches=0.0, passages_path='/home/aukey2/gen-cs-wiki-articles/rag_branch/data/cs_docs_index/my_knowledge_dataset', plugins=None, precision=32, prefix=None, prepare_data_per_node=None, process_position=0, profile=True, profiler=None, progress_bar_refresh_rate=None, ray_address='auto', reload_dataloaders_every_epoch=False, reload_dataloaders_every_n_epochs=0, replace_sampler_ddp=True, resume_from_checkpoint=None, seed=42, stochastic_weight_avg=False, strategy=None, sync_batchnorm=False, terminate_on_nan=None, test_max_target_length=25, tokenizer_name=None, tpu_cores=None, track_grad_norm=-1, train_batch_size=1, use_dummy_dataset=False, val_check_interval=1.0, val_max_target_length=25, warmup_steps=500, weight_decay=0.001, weights_save_path=None, weights_summary='top')
-Ay yooo /home/aukey2/gen-cs-wiki-articles/rag_branch/models/test/kb_ft_rag test-model
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0%|          | 0/2 [00:00<?, ?it/s]Validation sanity check:  50%|█████     | 1/2 [00:01<00:01,  1.14s/it]Validation sanity check: 100%|██████████| 2/2 [00:01<00:00,  1.05it/s]                                                                      Global seed set to 42
-Training: 0it [00:00, ?it/s]Training:   0%|          | 0/452 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/452 [00:00<?, ?it/s] huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-Epoch 0:   0%|          | 1/452 [00:00<05:38,  1.33it/s]Epoch 0:   0%|          | 1/452 [00:00<05:39,  1.33it/s, loss=96.5, v_num=36]Epoch 0:   0%|          | 2/452 [00:01<04:32,  1.65it/s, loss=96.5, v_num=36]Epoch 0:   0%|          | 2/452 [00:01<04:33,  1.65it/s, loss=102, v_num=36] Epoch 0:   1%|          | 3/452 [00:01<04:09,  1.80it/s, loss=102, v_num=36]Epoch 0:   1%|          | 3/452 [00:01<04:09,  1.80it/s, loss=125, v_num=36]Epoch 0:   1%|          | 4/452 [00:02<03:54,  1.91it/s, loss=125, v_num=36]Epoch 0:   1%|          | 4/452 [00:02<03:54,  1.91it/s, loss=107, v_num=36]Epoch 0:   1%|          | 5/452 [00:02<03:45,  1.98it/s, loss=107, v_num=36]Epoch 0:   1%|          | 5/452 [00:02<03:45,  1.98it/s, loss=111, v_num=36]Epoch 0:   1%|▏         | 6/452 [00:02<03:40,  2.02it/s, loss=111, v_num=36]Epoch 0:   1%|▏         | 6/452 [00:02<03:40,  2.02it/s, loss=122, v_num=36]Epoch 0:   2%|▏         | 7/452 [00:03<03:37,  2.05it/s, loss=122, v_num=36]Epoch 0:   2%|▏         | 7/452 [00:03<03:37,  2.04it/s, loss=125, v_num=36]Epoch 0:   2%|▏         | 8/452 [00:03<03:34,  2.07it/s, loss=125, v_num=36]Epoch 0:   2%|▏         | 8/452 [00:03<03:34,  2.07it/s, loss=121, v_num=36]Epoch 0:   2%|▏         | 9/452 [00:04<03:32,  2.08it/s, loss=121, v_num=36]Epoch 0:   2%|▏         | 9/452 [00:04<03:32,  2.08it/s, loss=125, v_num=36]Epoch 0:   2%|▏         | 10/452 [00:04<03:30,  2.10it/s, loss=125, v_num=36]Epoch 0:   2%|▏         | 10/452 [00:04<03:30,  2.10it/s, loss=124, v_num=36]Epoch 0:   2%|▏         | 11/452 [00:05<03:29,  2.11it/s, loss=124, v_num=36]Epoch 0:   2%|▏         | 11/452 [00:05<03:29,  2.11it/s, loss=117, v_num=36]Epoch 0:   3%|▎         | 12/452 [00:05<03:28,  2.11it/s, loss=117, v_num=36]Epoch 0:   3%|▎         | 12/452 [00:05<03:28,  2.11it/s, loss=120, v_num=36]Epoch 0:   3%|▎         | 13/452 [00:06<03:26,  2.13it/s, loss=120, v_num=36]Epoch 0:   3%|▎         | 13/452 [00:06<03:26,  2.13it/s, loss=115, v_num=36]Epoch 0:   3%|▎         | 14/452 [00:06<03:24,  2.14it/s, loss=115, v_num=36]Epoch 0:   3%|▎         | 14/452 [00:06<03:24,  2.14it/s, loss=110, v_num=36]Epoch 0:   3%|▎         | 15/452 [00:06<03:22,  2.16it/s, loss=110, v_num=36]Epoch 0:   3%|▎         | 15/452 [00:06<03:22,  2.16it/s, loss=107, v_num=36]Epoch 0:   4%|▎         | 16/452 [00:07<03:21,  2.17it/s, loss=107, v_num=36]Epoch 0:   4%|▎         | 16/452 [00:07<03:21,  2.17it/s, loss=106, v_num=36]Epoch 0:   4%|▍         | 17/452 [00:07<03:20,  2.17it/s, loss=106, v_num=36]Epoch 0:   4%|▍         | 17/452 [00:07<03:20,  2.17it/s, loss=108, v_num=36]Epoch 0:   4%|▍         | 18/452 [00:08<03:19,  2.18it/s, loss=108, v_num=36]Epoch 0:   4%|▍         | 18/452 [00:08<03:19,  2.18it/s, loss=112, v_num=36]Epoch 0:   4%|▍         | 19/452 [00:08<03:18,  2.18it/s, loss=112, v_num=36]Epoch 0:   4%|▍         | 19/452 [00:08<03:18,  2.18it/s, loss=110, v_num=36]Epoch 0:   4%|▍         | 20/452 [00:09<03:17,  2.19it/s, loss=110, v_num=36]Epoch 0:   4%|▍         | 20/452 [00:09<03:17,  2.19it/s, loss=108, v_num=36]Epoch 0:   5%|▍         | 21/452 [00:09<03:16,  2.19it/s, loss=108, v_num=36]Epoch 0:   5%|▍         | 21/452 [00:09<03:16,  2.19it/s, loss=106, v_num=36]Epoch 0:   5%|▍         | 22/452 [00:10<03:15,  2.20it/s, loss=106, v_num=36]Epoch 0:   5%|▍         | 22/452 [00:10<03:15,  2.20it/s, loss=107, v_num=36]Epoch 0:   5%|▌         | 23/452 [00:10<03:15,  2.20it/s, loss=107, v_num=36]Epoch 0:   5%|▌         | 23/452 [00:10<03:15,  2.20it/s, loss=104, v_num=36]Epoch 0:   5%|▌         | 24/452 [00:10<03:14,  2.20it/s, loss=104, v_num=36]Epoch 0:   5%|▌         | 24/452 [00:10<03:14,  2.20it/s, loss=108, v_num=36]Epoch 0:   6%|▌         | 25/452 [00:11<03:14,  2.20it/s, loss=108, v_num=36]Epoch 0:   6%|▌         | 25/452 [00:11<03:14,  2.20it/s, loss=108, v_num=36]Epoch 0:   6%|▌         | 26/452 [00:11<03:13,  2.20it/s, loss=108, v_num=36]Epoch 0:   6%|▌         | 26/452 [00:11<03:13,  2.20it/s, loss=106, v_num=36]Epoch 0:   6%|▌         | 27/452 [00:12<03:13,  2.20it/s, loss=106, v_num=36]Epoch 0:   6%|▌         | 27/452 [00:12<03:13,  2.20it/s, loss=107, v_num=36]Epoch 0:   6%|▌         | 28/452 [00:12<03:12,  2.20it/s, loss=107, v_num=36]Epoch 0:   6%|▌         | 28/452 [00:12<03:12,  2.20it/s, loss=109, v_num=36]Epoch 0:   6%|▋         | 29/452 [00:13<03:11,  2.20it/s, loss=109, v_num=36]Epoch 0:   6%|▋         | 29/452 [00:13<03:11,  2.20it/s, loss=103, v_num=36]Epoch 0:   7%|▋         | 30/452 [00:13<03:11,  2.21it/s, loss=103, v_num=36]Epoch 0:   7%|▋         | 30/452 [00:13<03:11,  2.21it/s, loss=100, v_num=36]Epoch 0:   7%|▋         | 31/452 [00:14<03:10,  2.21it/s, loss=100, v_num=36]Epoch 0:   7%|▋         | 31/452 [00:14<03:10,  2.21it/s, loss=104, v_num=36]Epoch 0:   7%|▋         | 32/452 [00:14<03:10,  2.21it/s, loss=104, v_num=36]Epoch 0:   7%|▋         | 32/452 [00:14<03:10,  2.21it/s, loss=103, v_num=36]Epoch 0:   7%|▋         | 33/452 [00:14<03:09,  2.21it/s, loss=103, v_num=36]Epoch 0:   7%|▋         | 33/452 [00:14<03:09,  2.21it/s, loss=105, v_num=36]Epoch 0:   8%|▊         | 34/452 [00:15<03:09,  2.21it/s, loss=105, v_num=36]Epoch 0:   8%|▊         | 34/452 [00:15<03:09,  2.21it/s, loss=106, v_num=36]Epoch 0:   8%|▊         | 35/452 [00:15<03:08,  2.21it/s, loss=106, v_num=36]Epoch 0:   8%|▊         | 35/452 [00:15<03:08,  2.21it/s, loss=104, v_num=36]Epoch 0:   8%|▊         | 36/452 [00:16<03:07,  2.22it/s, loss=104, v_num=36]Epoch 0:   8%|▊         | 36/452 [00:16<03:07,  2.22it/s, loss=103, v_num=36]Epoch 0:   8%|▊         | 37/452 [00:16<03:07,  2.22it/s, loss=103, v_num=36]Epoch 0:   8%|▊         | 37/452 [00:16<03:07,  2.22it/s, loss=102, v_num=36]Epoch 0:   8%|▊         | 38/452 [00:17<03:06,  2.22it/s, loss=102, v_num=36]Epoch 0:   8%|▊         | 38/452 [00:17<03:06,  2.22it/s, loss=99.5, v_num=36]Epoch 0:   9%|▊         | 39/452 [00:17<03:06,  2.22it/s, loss=99.5, v_num=36]Epoch 0:   9%|▊         | 39/452 [00:17<03:06,  2.22it/s, loss=101, v_num=36] Epoch 0:   9%|▉         | 40/452 [00:18<03:05,  2.22it/s, loss=101, v_num=36]Epoch 0:   9%|▉         | 40/452 [00:18<03:05,  2.22it/s, loss=100, v_num=36]Epoch 0:   9%|▉         | 41/452 [00:18<03:05,  2.22it/s, loss=100, v_num=36]Epoch 0:   9%|▉         | 41/452 [00:18<03:05,  2.22it/s, loss=99, v_num=36] Epoch 0:   9%|▉         | 42/452 [00:18<03:04,  2.22it/s, loss=99, v_num=36]Epoch 0:   9%|▉         | 42/452 [00:18<03:04,  2.22it/s, loss=94.3, v_num=36]Epoch 0:  10%|▉         | 43/452 [00:19<03:03,  2.22it/s, loss=94.3, v_num=36]Epoch 0:  10%|▉         | 43/452 [00:19<03:03,  2.22it/s, loss=90.9, v_num=36]Epoch 0:  10%|▉         | 44/452 [00:19<03:03,  2.22it/s, loss=90.9, v_num=36]Epoch 0:  10%|▉         | 44/452 [00:19<03:03,  2.22it/s, loss=89.6, v_num=36]Epoch 0:  10%|▉         | 45/452 [00:20<03:02,  2.22it/s, loss=89.6, v_num=36]Epoch 0:  10%|▉         | 45/452 [00:20<03:02,  2.22it/s, loss=89.8, v_num=36]Epoch 0:  10%|█         | 46/452 [00:20<03:02,  2.23it/s, loss=89.8, v_num=36]Epoch 0:  10%|█         | 46/452 [00:20<03:02,  2.23it/s, loss=87.9, v_num=36]Epoch 0:  10%|█         | 47/452 [00:21<03:01,  2.23it/s, loss=87.9, v_num=36]Epoch 0:  10%|█         | 47/452 [00:21<03:01,  2.23it/s, loss=82.7, v_num=36]Epoch 0:  11%|█         | 48/452 [00:21<03:01,  2.23it/s, loss=82.7, v_num=36]Epoch 0:  11%|█         | 48/452 [00:21<03:01,  2.23it/s, loss=82.9, v_num=36]Epoch 0:  11%|█         | 49/452 [00:21<03:00,  2.23it/s, loss=82.9, v_num=36]Epoch 0:  11%|█         | 49/452 [00:21<03:00,  2.23it/s, loss=84.7, v_num=36]Epoch 0:  11%|█         | 50/452 [00:22<03:00,  2.23it/s, loss=84.7, v_num=36]Epoch 0:  11%|█         | 50/452 [00:22<03:00,  2.23it/s, loss=88, v_num=36]  Epoch 0:  11%|█▏        | 51/452 [00:22<02:59,  2.23it/s, loss=88, v_num=36]Epoch 0:  11%|█▏        | 51/452 [00:22<02:59,  2.23it/s, loss=88.4, v_num=36]Epoch 0:  12%|█▏        | 52/452 [00:23<02:59,  2.23it/s, loss=88.4, v_num=36]Epoch 0:  12%|█▏        | 52/452 [00:23<02:59,  2.23it/s, loss=86.2, v_num=36]Epoch 0:  12%|█▏        | 53/452 [00:23<02:59,  2.23it/s, loss=86.2, v_num=36]Epoch 0:  12%|█▏        | 53/452 [00:23<02:59,  2.23it/s, loss=89.5, v_num=36]Epoch 0:  12%|█▏        | 54/452 [00:24<02:58,  2.23it/s, loss=89.5, v_num=36]Epoch 0:  12%|█▏        | 54/452 [00:24<02:58,  2.23it/s, loss=89.4, v_num=36]Epoch 0:  12%|█▏        | 55/452 [00:24<02:58,  2.23it/s, loss=89.4, v_num=36]Epoch 0:  12%|█▏        | 55/452 [00:24<02:58,  2.23it/s, loss=94.9, v_num=36]Epoch 0:  12%|█▏        | 56/452 [00:25<02:57,  2.23it/s, loss=94.9, v_num=36]Epoch 0:  12%|█▏        | 56/452 [00:25<02:57,  2.23it/s, loss=97.2, v_num=36]Epoch 0:  13%|█▎        | 57/452 [00:25<02:57,  2.23it/s, loss=97.2, v_num=36]Epoch 0:  13%|█▎        | 57/452 [00:25<02:57,  2.23it/s, loss=97, v_num=36]  Epoch 0:  13%|█▎        | 58/452 [00:26<02:56,  2.23it/s, loss=97, v_num=36]Epoch 0:  13%|█▎        | 58/452 [00:26<02:56,  2.23it/s, loss=96.2, v_num=36]Epoch 0:  13%|█▎        | 59/452 [00:26<02:56,  2.23it/s, loss=96.2, v_num=36]Epoch 0:  13%|█▎        | 59/452 [00:26<02:56,  2.23it/s, loss=95.3, v_num=36]Epoch 0:  13%|█▎        | 60/452 [00:26<02:55,  2.23it/s, loss=95.3, v_num=36]Epoch 0:  13%|█▎        | 60/452 [00:26<02:55,  2.23it/s, loss=99, v_num=36]  Epoch 0:  13%|█▎        | 61/452 [00:27<02:55,  2.23it/s, loss=99, v_num=36]Epoch 0:  13%|█▎        | 61/452 [00:27<02:55,  2.23it/s, loss=101, v_num=36]Epoch 0:  14%|█▎        | 62/452 [00:27<02:54,  2.23it/s, loss=101, v_num=36]Epoch 0:  14%|█▎        | 62/452 [00:27<02:54,  2.23it/s, loss=103, v_num=36]Epoch 0:  14%|█▍        | 63/452 [00:28<02:54,  2.23it/s, loss=103, v_num=36]Epoch 0:  14%|█▍        | 63/452 [00:28<02:54,  2.23it/s, loss=102, v_num=36]Epoch 0:  14%|█▍        | 64/452 [00:28<02:53,  2.24it/s, loss=102, v_num=36]Epoch 0:  14%|█▍        | 64/452 [00:28<02:53,  2.24it/s, loss=97.2, v_num=36]Epoch 0:  14%|█▍        | 65/452 [00:29<02:53,  2.24it/s, loss=97.2, v_num=36]Epoch 0:  14%|█▍        | 65/452 [00:29<02:53,  2.24it/s, loss=93.7, v_num=36]Epoch 0:  15%|█▍        | 66/452 [00:29<02:52,  2.24it/s, loss=93.7, v_num=36]Epoch 0:  15%|█▍        | 66/452 [00:29<02:52,  2.24it/s, loss=91.6, v_num=36]Epoch 0:  15%|█▍        | 67/452 [00:29<02:52,  2.24it/s, loss=91.6, v_num=36]Epoch 0:  15%|█▍        | 67/452 [00:29<02:52,  2.24it/s, loss=95.2, v_num=36]Epoch 0:  15%|█▌        | 68/452 [00:30<02:51,  2.24it/s, loss=95.2, v_num=36]Epoch 0:  15%|█▌        | 68/452 [00:30<02:51,  2.24it/s, loss=94.3, v_num=36]Epoch 0:  15%|█▌        | 69/452 [00:30<02:51,  2.24it/s, loss=94.3, v_num=36]Epoch 0:  15%|█▌        | 69/452 [00:30<02:51,  2.24it/s, loss=96.6, v_num=36]Epoch 0:  15%|█▌        | 70/452 [00:31<02:50,  2.24it/s, loss=96.6, v_num=36]Epoch 0:  15%|█▌        | 70/452 [00:31<02:50,  2.24it/s, loss=92.6, v_num=36]Epoch 0:  16%|█▌        | 71/452 [00:31<02:50,  2.24it/s, loss=92.6, v_num=36]Epoch 0:  16%|█▌        | 71/452 [00:31<02:50,  2.24it/s, loss=89.6, v_num=36]Epoch 0:  16%|█▌        | 72/452 [00:32<02:49,  2.24it/s, loss=89.6, v_num=36]Epoch 0:  16%|█▌        | 72/452 [00:32<02:49,  2.24it/s, loss=86.2, v_num=36]Epoch 0:  16%|█▌        | 73/452 [00:32<02:49,  2.24it/s, loss=86.2, v_num=36]Epoch 0:  16%|█▌        | 73/452 [00:32<02:49,  2.24it/s, loss=82.9, v_num=36]Epoch 0:  16%|█▋        | 74/452 [00:32<02:48,  2.24it/s, loss=82.9, v_num=36]Epoch 0:  16%|█▋        | 74/452 [00:32<02:48,  2.24it/s, loss=82.1, v_num=36]Epoch 0:  17%|█▋        | 75/452 [00:33<02:48,  2.24it/s, loss=82.1, v_num=36]Epoch 0:  17%|█▋        | 75/452 [00:33<02:48,  2.24it/s, loss=81.6, v_num=36]Epoch 0:  17%|█▋        | 76/452 [00:33<02:47,  2.24it/s, loss=81.6, v_num=36]Epoch 0:  17%|█▋        | 76/452 [00:33<02:47,  2.24it/s, loss=78.3, v_num=36]Epoch 0:  17%|█▋        | 77/452 [00:34<02:47,  2.24it/s, loss=78.3, v_num=36]Epoch 0:  17%|█▋        | 77/452 [00:34<02:47,  2.24it/s, loss=77.5, v_num=36]Epoch 0:  17%|█▋        | 78/452 [00:34<02:46,  2.24it/s, loss=77.5, v_num=36]Epoch 0:  17%|█▋        | 78/452 [00:34<02:46,  2.24it/s, loss=75.1, v_num=36]Epoch 0:  17%|█▋        | 79/452 [00:35<02:46,  2.25it/s, loss=75.1, v_num=36]Epoch 0:  17%|█▋        | 79/452 [00:35<02:46,  2.25it/s, loss=74.7, v_num=36]Epoch 0:  18%|█▊        | 80/452 [00:35<02:45,  2.25it/s, loss=74.7, v_num=36]Epoch 0:  18%|█▊        | 80/452 [00:35<02:45,  2.25it/s, loss=71.8, v_num=36]Epoch 0:  18%|█▊        | 81/452 [00:36<02:45,  2.25it/s, loss=71.8, v_num=36]Epoch 0:  18%|█▊        | 81/452 [00:36<02:45,  2.25it/s, loss=70.1, v_num=36]Epoch 0:  18%|█▊        | 82/452 [00:36<02:44,  2.25it/s, loss=70.1, v_num=36]Epoch 0:  18%|█▊        | 82/452 [00:36<02:44,  2.25it/s, loss=71.9, v_num=36]Epoch 0:  18%|█▊        | 83/452 [00:36<02:44,  2.25it/s, loss=71.9, v_num=36]Epoch 0:  18%|█▊        | 83/452 [00:36<02:44,  2.25it/s, loss=74.4, v_num=36]Epoch 0:  19%|█▊        | 84/452 [00:37<02:43,  2.25it/s, loss=74.4, v_num=36]Epoch 0:  19%|█▊        | 84/452 [00:37<02:43,  2.25it/s, loss=77.2, v_num=36]Epoch 0:  19%|█▉        | 85/452 [00:37<02:43,  2.25it/s, loss=77.2, v_num=36]Epoch 0:  19%|█▉        | 85/452 [00:37<02:43,  2.25it/s, loss=75.9, v_num=36]Epoch 0:  19%|█▉        | 86/452 [00:38<02:42,  2.25it/s, loss=75.9, v_num=36]Epoch 0:  19%|█▉        | 86/452 [00:38<02:42,  2.25it/s, loss=77.6, v_num=36]Epoch 0:  19%|█▉        | 87/452 [00:38<02:42,  2.25it/s, loss=77.6, v_num=36]Epoch 0:  19%|█▉        | 87/452 [00:38<02:42,  2.25it/s, loss=72.3, v_num=36]Epoch 0:  19%|█▉        | 88/452 [00:39<02:41,  2.25it/s, loss=72.3, v_num=36]Epoch 0:  19%|█▉        | 88/452 [00:39<02:41,  2.25it/s, loss=68.2, v_num=36]Epoch 0:  20%|█▉        | 89/452 [00:39<02:41,  2.25it/s, loss=68.2, v_num=36]Epoch 0:  20%|█▉        | 89/452 [00:39<02:41,  2.25it/s, loss=64.4, v_num=36]Epoch 0:  20%|█▉        | 90/452 [00:39<02:40,  2.25it/s, loss=64.4, v_num=36]Epoch 0:  20%|█▉        | 90/452 [00:39<02:40,  2.25it/s, loss=66.4, v_num=36]Epoch 0:  20%|██        | 91/452 [00:40<02:40,  2.25it/s, loss=66.4, v_num=36]Epoch 0:  20%|██        | 91/452 [00:40<02:40,  2.25it/s, loss=69.1, v_num=36]Epoch 0:  20%|██        | 92/452 [00:40<02:39,  2.25it/s, loss=69.1, v_num=36]Epoch 0:  20%|██        | 92/452 [00:40<02:39,  2.25it/s, loss=72, v_num=36]  Epoch 0:  21%|██        | 93/452 [00:41<02:39,  2.25it/s, loss=72, v_num=36]Epoch 0:  21%|██        | 93/452 [00:41<02:39,  2.25it/s, loss=69, v_num=36]Epoch 0:  21%|██        | 94/452 [00:41<02:38,  2.25it/s, loss=69, v_num=36]Epoch 0:  21%|██        | 94/452 [00:41<02:38,  2.25it/s, loss=69, v_num=36]Epoch 0:  21%|██        | 95/452 [00:42<02:38,  2.25it/s, loss=69, v_num=36]Epoch 0:  21%|██        | 95/452 [00:42<02:38,  2.25it/s, loss=68.9, v_num=36]Epoch 0:  21%|██        | 96/452 [00:42<02:37,  2.25it/s, loss=68.9, v_num=36]Epoch 0:  21%|██        | 96/452 [00:42<02:37,  2.25it/s, loss=69.5, v_num=36]Epoch 0:  21%|██▏       | 97/452 [00:43<02:37,  2.25it/s, loss=69.5, v_num=36]Epoch 0:  21%|██▏       | 97/452 [00:43<02:37,  2.25it/s, loss=65.4, v_num=36]Epoch 0:  22%|██▏       | 98/452 [00:43<02:36,  2.25it/s, loss=65.4, v_num=36]Epoch 0:  22%|██▏       | 98/452 [00:43<02:36,  2.25it/s, loss=65, v_num=36]  Epoch 0:  22%|██▏       | 99/452 [00:43<02:36,  2.26it/s, loss=65, v_num=36]Epoch 0:  22%|██▏       | 99/452 [00:43<02:36,  2.26it/s, loss=61.9, v_num=36]Epoch 0:  22%|██▏       | 100/452 [00:44<02:36,  2.26it/s, loss=61.9, v_num=36]Epoch 0:  22%|██▏       | 100/452 [00:44<02:36,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  22%|██▏       | 101/452 [00:44<02:35,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  22%|██▏       | 101/452 [00:44<02:35,  2.26it/s, loss=62.7, v_num=36]Epoch 0:  23%|██▎       | 102/452 [00:45<02:35,  2.26it/s, loss=62.7, v_num=36]Epoch 0:  23%|██▎       | 102/452 [00:45<02:35,  2.26it/s, loss=64.1, v_num=36]Epoch 0:  23%|██▎       | 103/452 [00:45<02:34,  2.26it/s, loss=64.1, v_num=36]Epoch 0:  23%|██▎       | 103/452 [00:45<02:34,  2.26it/s, loss=64.1, v_num=36]Epoch 0:  23%|██▎       | 104/452 [00:46<02:34,  2.26it/s, loss=64.1, v_num=36]Epoch 0:  23%|██▎       | 104/452 [00:46<02:34,  2.26it/s, loss=64, v_num=36]  Epoch 0:  23%|██▎       | 105/452 [00:46<02:33,  2.26it/s, loss=64, v_num=36]Epoch 0:  23%|██▎       | 105/452 [00:46<02:33,  2.26it/s, loss=64.1, v_num=36]Epoch 0:  23%|██▎       | 106/452 [00:46<02:33,  2.26it/s, loss=64.1, v_num=36]Epoch 0:  23%|██▎       | 106/452 [00:46<02:33,  2.26it/s, loss=61.3, v_num=36]Epoch 0:  24%|██▎       | 107/452 [00:47<02:32,  2.26it/s, loss=61.3, v_num=36]Epoch 0:  24%|██▎       | 107/452 [00:47<02:32,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  24%|██▍       | 108/452 [00:47<02:32,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  24%|██▍       | 108/452 [00:47<02:32,  2.26it/s, loss=64, v_num=36]  Epoch 0:  24%|██▍       | 109/452 [00:48<02:31,  2.26it/s, loss=64, v_num=36]Epoch 0:  24%|██▍       | 109/452 [00:48<02:31,  2.26it/s, loss=68.1, v_num=36]Epoch 0:  24%|██▍       | 110/452 [00:48<02:31,  2.26it/s, loss=68.1, v_num=36]Epoch 0:  24%|██▍       | 110/452 [00:48<02:31,  2.26it/s, loss=67.9, v_num=36]Epoch 0:  25%|██▍       | 111/452 [00:49<02:31,  2.26it/s, loss=67.9, v_num=36]Epoch 0:  25%|██▍       | 111/452 [00:49<02:31,  2.26it/s, loss=64.4, v_num=36]Epoch 0:  25%|██▍       | 112/452 [00:49<02:30,  2.26it/s, loss=64.4, v_num=36]Epoch 0:  25%|██▍       | 112/452 [00:49<02:30,  2.26it/s, loss=63.2, v_num=36]Epoch 0:  25%|██▌       | 113/452 [00:50<02:30,  2.26it/s, loss=63.2, v_num=36]Epoch 0:  25%|██▌       | 113/452 [00:50<02:30,  2.26it/s, loss=67.3, v_num=36]Epoch 0:  25%|██▌       | 114/452 [00:50<02:29,  2.26it/s, loss=67.3, v_num=36]Epoch 0:  25%|██▌       | 114/452 [00:50<02:29,  2.26it/s, loss=70.2, v_num=36]Epoch 0:  25%|██▌       | 115/452 [00:50<02:29,  2.26it/s, loss=70.2, v_num=36]Epoch 0:  25%|██▌       | 115/452 [00:50<02:29,  2.26it/s, loss=69.7, v_num=36]Epoch 0:  26%|██▌       | 116/452 [00:51<02:28,  2.26it/s, loss=69.7, v_num=36]Epoch 0:  26%|██▌       | 116/452 [00:51<02:28,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  26%|██▌       | 117/452 [00:51<02:28,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  26%|██▌       | 117/452 [00:51<02:28,  2.26it/s, loss=71.2, v_num=36]Epoch 0:  26%|██▌       | 118/452 [00:52<02:27,  2.26it/s, loss=71.2, v_num=36]Epoch 0:  26%|██▌       | 118/452 [00:52<02:27,  2.26it/s, loss=74, v_num=36]  Epoch 0:  26%|██▋       | 119/452 [00:52<02:27,  2.26it/s, loss=74, v_num=36]Epoch 0:  26%|██▋       | 119/452 [00:52<02:27,  2.26it/s, loss=77.6, v_num=36]Epoch 0:  27%|██▋       | 120/452 [00:53<02:27,  2.26it/s, loss=77.6, v_num=36]Epoch 0:  27%|██▋       | 120/452 [00:53<02:27,  2.26it/s, loss=78.1, v_num=36]Epoch 0:  27%|██▋       | 121/452 [00:53<02:26,  2.26it/s, loss=78.1, v_num=36]Epoch 0:  27%|██▋       | 121/452 [00:53<02:26,  2.26it/s, loss=81.5, v_num=36]Epoch 0:  27%|██▋       | 122/452 [00:54<02:26,  2.26it/s, loss=81.5, v_num=36]Epoch 0:  27%|██▋       | 122/452 [00:54<02:26,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  27%|██▋       | 123/452 [00:54<02:25,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  27%|██▋       | 123/452 [00:54<02:25,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  27%|██▋       | 124/452 [00:54<02:25,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  27%|██▋       | 124/452 [00:54<02:25,  2.26it/s, loss=79.4, v_num=36]Epoch 0:  28%|██▊       | 125/452 [00:55<02:24,  2.26it/s, loss=79.4, v_num=36]Epoch 0:  28%|██▊       | 125/452 [00:55<02:24,  2.26it/s, loss=83.7, v_num=36]Epoch 0:  28%|██▊       | 126/452 [00:55<02:24,  2.26it/s, loss=83.7, v_num=36]Epoch 0:  28%|██▊       | 126/452 [00:55<02:24,  2.26it/s, loss=84.9, v_num=36]Epoch 0:  28%|██▊       | 127/452 [00:56<02:24,  2.26it/s, loss=84.9, v_num=36]Epoch 0:  28%|██▊       | 127/452 [00:56<02:24,  2.26it/s, loss=85.9, v_num=36]Epoch 0:  28%|██▊       | 128/452 [00:56<02:23,  2.26it/s, loss=85.9, v_num=36]Epoch 0:  28%|██▊       | 128/452 [00:56<02:23,  2.26it/s, loss=87.9, v_num=36]Epoch 0:  29%|██▊       | 129/452 [00:57<02:23,  2.25it/s, loss=87.9, v_num=36]Epoch 0:  29%|██▊       | 129/452 [00:57<02:23,  2.25it/s, loss=86, v_num=36]  Epoch 0:  29%|██▉       | 130/452 [00:57<02:22,  2.25it/s, loss=86, v_num=36]Epoch 0:  29%|██▉       | 130/452 [00:57<02:22,  2.25it/s, loss=87, v_num=36]Epoch 0:  29%|██▉       | 131/452 [00:58<02:22,  2.26it/s, loss=87, v_num=36]Epoch 0:  29%|██▉       | 131/452 [00:58<02:22,  2.26it/s, loss=86.4, v_num=36]Epoch 0:  29%|██▉       | 132/452 [00:58<02:21,  2.25it/s, loss=86.4, v_num=36]Epoch 0:  29%|██▉       | 132/452 [00:58<02:21,  2.25it/s, loss=88, v_num=36]  Epoch 0:  29%|██▉       | 133/452 [00:58<02:21,  2.25it/s, loss=88, v_num=36]Epoch 0:  29%|██▉       | 133/452 [00:58<02:21,  2.25it/s, loss=87, v_num=36]Epoch 0:  30%|██▉       | 134/452 [00:59<02:20,  2.26it/s, loss=87, v_num=36]Epoch 0:  30%|██▉       | 134/452 [00:59<02:20,  2.26it/s, loss=82.2, v_num=36]Epoch 0:  30%|██▉       | 135/452 [00:59<02:20,  2.26it/s, loss=82.2, v_num=36]Epoch 0:  30%|██▉       | 135/452 [00:59<02:20,  2.26it/s, loss=79.5, v_num=36]Epoch 0:  30%|███       | 136/452 [01:00<02:20,  2.26it/s, loss=79.5, v_num=36]Epoch 0:  30%|███       | 136/452 [01:00<02:20,  2.26it/s, loss=79.7, v_num=36]Epoch 0:  30%|███       | 137/452 [01:00<02:19,  2.26it/s, loss=79.7, v_num=36]Epoch 0:  30%|███       | 137/452 [01:00<02:19,  2.26it/s, loss=83.2, v_num=36]Epoch 0:  31%|███       | 138/452 [01:01<02:19,  2.26it/s, loss=83.2, v_num=36]Epoch 0:  31%|███       | 138/452 [01:01<02:19,  2.26it/s, loss=82.4, v_num=36]Epoch 0:  31%|███       | 139/452 [01:01<02:18,  2.26it/s, loss=82.4, v_num=36]Epoch 0:  31%|███       | 139/452 [01:01<02:18,  2.26it/s, loss=84.6, v_num=36]Epoch 0:  31%|███       | 140/452 [01:02<02:18,  2.26it/s, loss=84.6, v_num=36]Epoch 0:  31%|███       | 140/452 [01:02<02:18,  2.26it/s, loss=83.2, v_num=36]Epoch 0:  31%|███       | 141/452 [01:02<02:17,  2.26it/s, loss=83.2, v_num=36]Epoch 0:  31%|███       | 141/452 [01:02<02:17,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  31%|███▏      | 142/452 [01:02<02:17,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  31%|███▏      | 142/452 [01:02<02:17,  2.26it/s, loss=77.6, v_num=36]Epoch 0:  32%|███▏      | 143/452 [01:03<02:16,  2.26it/s, loss=77.6, v_num=36]Epoch 0:  32%|███▏      | 143/452 [01:03<02:16,  2.26it/s, loss=78.4, v_num=36]Epoch 0:  32%|███▏      | 144/452 [01:03<02:16,  2.26it/s, loss=78.4, v_num=36]Epoch 0:  32%|███▏      | 144/452 [01:03<02:16,  2.26it/s, loss=81.1, v_num=36]Epoch 0:  32%|███▏      | 145/452 [01:04<02:16,  2.26it/s, loss=81.1, v_num=36]Epoch 0:  32%|███▏      | 145/452 [01:04<02:16,  2.26it/s, loss=79.9, v_num=36]Epoch 0:  32%|███▏      | 146/452 [01:04<02:15,  2.26it/s, loss=79.9, v_num=36]Epoch 0:  32%|███▏      | 146/452 [01:04<02:15,  2.26it/s, loss=81.7, v_num=36]Epoch 0:  33%|███▎      | 147/452 [01:05<02:15,  2.26it/s, loss=81.7, v_num=36]Epoch 0:  33%|███▎      | 147/452 [01:05<02:15,  2.26it/s, loss=80.8, v_num=36]Epoch 0:  33%|███▎      | 148/452 [01:05<02:14,  2.26it/s, loss=80.8, v_num=36]Epoch 0:  33%|███▎      | 148/452 [01:05<02:14,  2.26it/s, loss=81.6, v_num=36]Epoch 0:  33%|███▎      | 149/452 [01:06<02:14,  2.26it/s, loss=81.6, v_num=36]Epoch 0:  33%|███▎      | 149/452 [01:06<02:14,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  33%|███▎      | 150/452 [01:06<02:13,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  33%|███▎      | 150/452 [01:06<02:13,  2.26it/s, loss=76, v_num=36]  Epoch 0:  33%|███▎      | 151/452 [01:06<02:13,  2.26it/s, loss=76, v_num=36]Epoch 0:  33%|███▎      | 151/452 [01:06<02:13,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  34%|███▎      | 152/452 [01:07<02:12,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  34%|███▎      | 152/452 [01:07<02:12,  2.26it/s, loss=79.1, v_num=36]Epoch 0:  34%|███▍      | 153/452 [01:07<02:12,  2.26it/s, loss=79.1, v_num=36]Epoch 0:  34%|███▍      | 153/452 [01:07<02:12,  2.26it/s, loss=78.3, v_num=36]Epoch 0:  34%|███▍      | 154/452 [01:08<02:12,  2.25it/s, loss=78.3, v_num=36]Epoch 0:  34%|███▍      | 154/452 [01:08<02:12,  2.25it/s, loss=83.1, v_num=36]Epoch 0:  34%|███▍      | 155/452 [01:08<02:11,  2.26it/s, loss=83.1, v_num=36]Epoch 0:  34%|███▍      | 155/452 [01:08<02:11,  2.25it/s, loss=82.9, v_num=36]Epoch 0:  35%|███▍      | 156/452 [01:09<02:11,  2.26it/s, loss=82.9, v_num=36]Epoch 0:  35%|███▍      | 156/452 [01:09<02:11,  2.26it/s, loss=79.1, v_num=36]Epoch 0:  35%|███▍      | 157/452 [01:09<02:10,  2.26it/s, loss=79.1, v_num=36]Epoch 0:  35%|███▍      | 157/452 [01:09<02:10,  2.26it/s, loss=77.3, v_num=36]Epoch 0:  35%|███▍      | 158/452 [01:10<02:10,  2.26it/s, loss=77.3, v_num=36]Epoch 0:  35%|███▍      | 158/452 [01:10<02:10,  2.26it/s, loss=76.2, v_num=36]Epoch 0:  35%|███▌      | 159/452 [01:10<02:09,  2.26it/s, loss=76.2, v_num=36]Epoch 0:  35%|███▌      | 159/452 [01:10<02:09,  2.26it/s, loss=71.4, v_num=36]Epoch 0:  35%|███▌      | 160/452 [01:10<02:09,  2.26it/s, loss=71.4, v_num=36]Epoch 0:  35%|███▌      | 160/452 [01:10<02:09,  2.26it/s, loss=75.6, v_num=36]Epoch 0:  36%|███▌      | 161/452 [01:11<02:09,  2.26it/s, loss=75.6, v_num=36]Epoch 0:  36%|███▌      | 161/452 [01:11<02:09,  2.26it/s, loss=80.4, v_num=36]Epoch 0:  36%|███▌      | 162/452 [01:11<02:08,  2.26it/s, loss=80.4, v_num=36]Epoch 0:  36%|███▌      | 162/452 [01:11<02:08,  2.26it/s, loss=79.5, v_num=36]Epoch 0:  36%|███▌      | 163/452 [01:12<02:08,  2.26it/s, loss=79.5, v_num=36]Epoch 0:  36%|███▌      | 163/452 [01:12<02:08,  2.26it/s, loss=81.7, v_num=36]Epoch 0:  36%|███▋      | 164/452 [01:12<02:07,  2.26it/s, loss=81.7, v_num=36]Epoch 0:  36%|███▋      | 164/452 [01:12<02:07,  2.26it/s, loss=79.6, v_num=36]Epoch 0:  37%|███▋      | 165/452 [01:13<02:07,  2.25it/s, loss=79.6, v_num=36]Epoch 0:  37%|███▋      | 165/452 [01:13<02:07,  2.25it/s, loss=76.5, v_num=36]Epoch 0:  37%|███▋      | 166/452 [01:13<02:06,  2.25it/s, loss=76.5, v_num=36]Epoch 0:  37%|███▋      | 166/452 [01:13<02:06,  2.25it/s, loss=72.9, v_num=36]Epoch 0:  37%|███▋      | 167/452 [01:14<02:06,  2.26it/s, loss=72.9, v_num=36]Epoch 0:  37%|███▋      | 167/452 [01:14<02:06,  2.26it/s, loss=71.8, v_num=36]Epoch 0:  37%|███▋      | 168/452 [01:14<02:05,  2.26it/s, loss=71.8, v_num=36]Epoch 0:  37%|███▋      | 168/452 [01:14<02:05,  2.25it/s, loss=67.7, v_num=36]Epoch 0:  37%|███▋      | 169/452 [01:14<02:05,  2.25it/s, loss=67.7, v_num=36]Epoch 0:  37%|███▋      | 169/452 [01:14<02:05,  2.25it/s, loss=72, v_num=36]  Epoch 0:  38%|███▊      | 170/452 [01:15<02:05,  2.26it/s, loss=72, v_num=36]Epoch 0:  38%|███▊      | 170/452 [01:15<02:05,  2.26it/s, loss=72.9, v_num=36]Epoch 0:  38%|███▊      | 171/452 [01:15<02:04,  2.26it/s, loss=72.9, v_num=36]Epoch 0:  38%|███▊      | 171/452 [01:15<02:04,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  38%|███▊      | 172/452 [01:16<02:04,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  38%|███▊      | 172/452 [01:16<02:04,  2.26it/s, loss=72.4, v_num=36]Epoch 0:  38%|███▊      | 173/452 [01:16<02:03,  2.26it/s, loss=72.4, v_num=36]Epoch 0:  38%|███▊      | 173/452 [01:16<02:03,  2.26it/s, loss=70, v_num=36]  Epoch 0:  38%|███▊      | 174/452 [01:17<02:03,  2.26it/s, loss=70, v_num=36]Epoch 0:  38%|███▊      | 174/452 [01:17<02:03,  2.26it/s, loss=68.5, v_num=36]Epoch 0:  39%|███▊      | 175/452 [01:17<02:02,  2.26it/s, loss=68.5, v_num=36]Epoch 0:  39%|███▊      | 175/452 [01:17<02:02,  2.26it/s, loss=68.7, v_num=36]Epoch 0:  39%|███▉      | 176/452 [01:18<02:02,  2.26it/s, loss=68.7, v_num=36]Epoch 0:  39%|███▉      | 176/452 [01:18<02:02,  2.26it/s, loss=71.8, v_num=36]Epoch 0:  39%|███▉      | 177/452 [01:18<02:01,  2.26it/s, loss=71.8, v_num=36]Epoch 0:  39%|███▉      | 177/452 [01:18<02:01,  2.26it/s, loss=74.2, v_num=36]Epoch 0:  39%|███▉      | 178/452 [01:18<02:01,  2.25it/s, loss=74.2, v_num=36]Epoch 0:  39%|███▉      | 178/452 [01:18<02:01,  2.25it/s, loss=76.8, v_num=36]Epoch 0:  40%|███▉      | 179/452 [01:19<02:01,  2.25it/s, loss=76.8, v_num=36]Epoch 0:  40%|███▉      | 179/452 [01:19<02:01,  2.25it/s, loss=80.5, v_num=36]Epoch 0:  40%|███▉      | 180/452 [01:19<02:00,  2.25it/s, loss=80.5, v_num=36]Epoch 0:  40%|███▉      | 180/452 [01:19<02:00,  2.25it/s, loss=78.4, v_num=36]Epoch 0:  40%|████      | 181/452 [01:20<02:00,  2.26it/s, loss=78.4, v_num=36]Epoch 0:  40%|████      | 181/452 [01:20<02:00,  2.26it/s, loss=73.1, v_num=36]Epoch 0:  40%|████      | 182/452 [01:20<01:59,  2.26it/s, loss=73.1, v_num=36]Epoch 0:  40%|████      | 182/452 [01:20<01:59,  2.26it/s, loss=73.6, v_num=36]Epoch 0:  40%|████      | 183/452 [01:21<01:59,  2.26it/s, loss=73.6, v_num=36]Epoch 0:  40%|████      | 183/452 [01:21<01:59,  2.26it/s, loss=69, v_num=36]  Epoch 0:  41%|████      | 184/452 [01:21<01:58,  2.26it/s, loss=69, v_num=36]Epoch 0:  41%|████      | 184/452 [01:21<01:58,  2.26it/s, loss=70.9, v_num=36]Epoch 0:  41%|████      | 185/452 [01:22<01:58,  2.26it/s, loss=70.9, v_num=36]Epoch 0:  41%|████      | 185/452 [01:22<01:58,  2.26it/s, loss=75.4, v_num=36]Epoch 0:  41%|████      | 186/452 [01:22<01:57,  2.26it/s, loss=75.4, v_num=36]Epoch 0:  41%|████      | 186/452 [01:22<01:57,  2.26it/s, loss=75.3, v_num=36]Epoch 0:  41%|████▏     | 187/452 [01:22<01:57,  2.26it/s, loss=75.3, v_num=36]Epoch 0:  41%|████▏     | 187/452 [01:22<01:57,  2.26it/s, loss=77, v_num=36]  Epoch 0:  42%|████▏     | 188/452 [01:23<01:57,  2.26it/s, loss=77, v_num=36]Epoch 0:  42%|████▏     | 188/452 [01:23<01:57,  2.26it/s, loss=78.5, v_num=36]Epoch 0:  42%|████▏     | 189/452 [01:23<01:56,  2.26it/s, loss=78.5, v_num=36]Epoch 0:  42%|████▏     | 189/452 [01:23<01:56,  2.26it/s, loss=76, v_num=36]  Epoch 0:  42%|████▏     | 190/452 [01:24<01:56,  2.26it/s, loss=76, v_num=36]Epoch 0:  42%|████▏     | 190/452 [01:24<01:56,  2.26it/s, loss=75.4, v_num=36]Epoch 0:  42%|████▏     | 191/452 [01:24<01:55,  2.26it/s, loss=75.4, v_num=36]Epoch 0:  42%|████▏     | 191/452 [01:24<01:55,  2.26it/s, loss=76.9, v_num=36]Epoch 0:  42%|████▏     | 192/452 [01:25<01:55,  2.26it/s, loss=76.9, v_num=36]Epoch 0:  42%|████▏     | 192/452 [01:25<01:55,  2.26it/s, loss=74.3, v_num=36]Epoch 0:  43%|████▎     | 193/452 [01:25<01:54,  2.26it/s, loss=74.3, v_num=36]Epoch 0:  43%|████▎     | 193/452 [01:25<01:54,  2.26it/s, loss=75.9, v_num=36]Epoch 0:  43%|████▎     | 194/452 [01:25<01:54,  2.26it/s, loss=75.9, v_num=36]Epoch 0:  43%|████▎     | 194/452 [01:25<01:54,  2.26it/s, loss=76.4, v_num=36]Epoch 0:  43%|████▎     | 195/452 [01:26<01:53,  2.26it/s, loss=76.4, v_num=36]Epoch 0:  43%|████▎     | 195/452 [01:26<01:53,  2.26it/s, loss=78.8, v_num=36]Epoch 0:  43%|████▎     | 196/452 [01:26<01:53,  2.26it/s, loss=78.8, v_num=36]Epoch 0:  43%|████▎     | 196/452 [01:26<01:53,  2.26it/s, loss=76.4, v_num=36]Epoch 0:  44%|████▎     | 197/452 [01:27<01:53,  2.26it/s, loss=76.4, v_num=36]Epoch 0:  44%|████▎     | 197/452 [01:27<01:53,  2.26it/s, loss=74.6, v_num=36]Epoch 0:  44%|████▍     | 198/452 [01:27<01:52,  2.26it/s, loss=74.6, v_num=36]Epoch 0:  44%|████▍     | 198/452 [01:27<01:52,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  44%|████▍     | 199/452 [01:28<01:52,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  44%|████▍     | 199/452 [01:28<01:52,  2.26it/s, loss=72.5, v_num=36]Epoch 0:  44%|████▍     | 200/452 [01:28<01:51,  2.26it/s, loss=72.5, v_num=36]Epoch 0:  44%|████▍     | 200/452 [01:28<01:51,  2.26it/s, loss=72.9, v_num=36]Epoch 0:  44%|████▍     | 201/452 [01:29<01:51,  2.26it/s, loss=72.9, v_num=36]Epoch 0:  44%|████▍     | 201/452 [01:29<01:51,  2.26it/s, loss=75.6, v_num=36]Epoch 0:  45%|████▍     | 202/452 [01:29<01:50,  2.26it/s, loss=75.6, v_num=36]Epoch 0:  45%|████▍     | 202/452 [01:29<01:50,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  45%|████▍     | 203/452 [01:30<01:50,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  45%|████▍     | 203/452 [01:30<01:50,  2.26it/s, loss=82.1, v_num=36]Epoch 0:  45%|████▌     | 204/452 [01:30<01:49,  2.26it/s, loss=82.1, v_num=36]Epoch 0:  45%|████▌     | 204/452 [01:30<01:49,  2.26it/s, loss=81.2, v_num=36]Epoch 0:  45%|████▌     | 205/452 [01:30<01:49,  2.26it/s, loss=81.2, v_num=36]Epoch 0:  45%|████▌     | 205/452 [01:30<01:49,  2.26it/s, loss=75.5, v_num=36]Epoch 0:  46%|████▌     | 206/452 [01:31<01:49,  2.26it/s, loss=75.5, v_num=36]Epoch 0:  46%|████▌     | 206/452 [01:31<01:49,  2.26it/s, loss=78.6, v_num=36]Epoch 0:  46%|████▌     | 207/452 [01:31<01:48,  2.26it/s, loss=78.6, v_num=36]Epoch 0:  46%|████▌     | 207/452 [01:31<01:48,  2.26it/s, loss=78.2, v_num=36]Epoch 0:  46%|████▌     | 208/452 [01:32<01:48,  2.26it/s, loss=78.2, v_num=36]Epoch 0:  46%|████▌     | 208/452 [01:32<01:48,  2.26it/s, loss=80, v_num=36]  Epoch 0:  46%|████▌     | 209/452 [01:32<01:47,  2.26it/s, loss=80, v_num=36]Epoch 0:  46%|████▌     | 209/452 [01:32<01:47,  2.26it/s, loss=81.4, v_num=36]Epoch 0:  46%|████▋     | 210/452 [01:33<01:47,  2.26it/s, loss=81.4, v_num=36]Epoch 0:  46%|████▋     | 210/452 [01:33<01:47,  2.26it/s, loss=82.5, v_num=36]Epoch 0:  47%|████▋     | 211/452 [01:33<01:46,  2.26it/s, loss=82.5, v_num=36]Epoch 0:  47%|████▋     | 211/452 [01:33<01:46,  2.26it/s, loss=78.9, v_num=36]Epoch 0:  47%|████▋     | 212/452 [01:33<01:46,  2.26it/s, loss=78.9, v_num=36]Epoch 0:  47%|████▋     | 212/452 [01:33<01:46,  2.26it/s, loss=80.3, v_num=36]Epoch 0:  47%|████▋     | 213/452 [01:34<01:45,  2.26it/s, loss=80.3, v_num=36]Epoch 0:  47%|████▋     | 213/452 [01:34<01:45,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  47%|████▋     | 214/452 [01:34<01:45,  2.26it/s, loss=78.7, v_num=36]Epoch 0:  47%|████▋     | 214/452 [01:34<01:45,  2.26it/s, loss=80.3, v_num=36]Epoch 0:  48%|████▊     | 215/452 [01:35<01:45,  2.26it/s, loss=80.3, v_num=36]Epoch 0:  48%|████▊     | 215/452 [01:35<01:45,  2.26it/s, loss=77.1, v_num=36]Epoch 0:  48%|████▊     | 216/452 [01:35<01:44,  2.26it/s, loss=77.1, v_num=36]Epoch 0:  48%|████▊     | 216/452 [01:35<01:44,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  48%|████▊     | 217/452 [01:36<01:44,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  48%|████▊     | 217/452 [01:36<01:44,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  48%|████▊     | 218/452 [01:36<01:43,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  48%|████▊     | 218/452 [01:36<01:43,  2.26it/s, loss=79.4, v_num=36]Epoch 0:  48%|████▊     | 219/452 [01:37<01:43,  2.26it/s, loss=79.4, v_num=36]Epoch 0:  48%|████▊     | 219/452 [01:37<01:43,  2.26it/s, loss=76.2, v_num=36]Epoch 0:  49%|████▊     | 220/452 [01:37<01:42,  2.26it/s, loss=76.2, v_num=36]Epoch 0:  49%|████▊     | 220/452 [01:37<01:42,  2.26it/s, loss=74.6, v_num=36]Epoch 0:  49%|████▉     | 221/452 [01:37<01:42,  2.26it/s, loss=74.6, v_num=36]Epoch 0:  49%|████▉     | 221/452 [01:37<01:42,  2.26it/s, loss=73.6, v_num=36]Epoch 0:  49%|████▉     | 222/452 [01:38<01:41,  2.26it/s, loss=73.6, v_num=36]Epoch 0:  49%|████▉     | 222/452 [01:38<01:41,  2.26it/s, loss=68.4, v_num=36]Epoch 0:  49%|████▉     | 223/452 [01:38<01:41,  2.26it/s, loss=68.4, v_num=36]Epoch 0:  49%|████▉     | 223/452 [01:38<01:41,  2.26it/s, loss=68.1, v_num=36]Epoch 0:  50%|████▉     | 224/452 [01:39<01:41,  2.26it/s, loss=68.1, v_num=36]Epoch 0:  50%|████▉     | 224/452 [01:39<01:41,  2.26it/s, loss=64.7, v_num=36]Epoch 0:  50%|████▉     | 225/452 [01:39<01:40,  2.26it/s, loss=64.7, v_num=36]Epoch 0:  50%|████▉     | 225/452 [01:39<01:40,  2.26it/s, loss=64.8, v_num=36]Epoch 0:  50%|█████     | 226/452 [01:40<01:40,  2.26it/s, loss=64.8, v_num=36]Epoch 0:  50%|█████     | 226/452 [01:40<01:40,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  50%|█████     | 227/452 [01:40<01:39,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  50%|█████     | 227/452 [01:40<01:39,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  50%|█████     | 228/452 [01:40<01:39,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  50%|█████     | 228/452 [01:40<01:39,  2.26it/s, loss=58.6, v_num=36]Epoch 0:  51%|█████     | 229/452 [01:41<01:38,  2.26it/s, loss=58.6, v_num=36]Epoch 0:  51%|█████     | 229/452 [01:41<01:38,  2.26it/s, loss=54.1, v_num=36]Epoch 0:  51%|█████     | 230/452 [01:41<01:38,  2.26it/s, loss=54.1, v_num=36]Epoch 0:  51%|█████     | 230/452 [01:41<01:38,  2.26it/s, loss=56.9, v_num=36]Epoch 0:  51%|█████     | 231/452 [01:42<01:37,  2.26it/s, loss=56.9, v_num=36]Epoch 0:  51%|█████     | 231/452 [01:42<01:37,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  51%|█████▏    | 232/452 [01:42<01:37,  2.26it/s, loss=62.1, v_num=36]Epoch 0:  51%|█████▏    | 232/452 [01:42<01:37,  2.26it/s, loss=63.9, v_num=36]Epoch 0:  52%|█████▏    | 233/452 [01:43<01:36,  2.26it/s, loss=63.9, v_num=36]Epoch 0:  52%|█████▏    | 233/452 [01:43<01:36,  2.26it/s, loss=64.9, v_num=36]Epoch 0:  52%|█████▏    | 234/452 [01:43<01:36,  2.26it/s, loss=64.9, v_num=36]Epoch 0:  52%|█████▏    | 234/452 [01:43<01:36,  2.26it/s, loss=62.7, v_num=36]Epoch 0:  52%|█████▏    | 235/452 [01:44<01:36,  2.26it/s, loss=62.7, v_num=36]Epoch 0:  52%|█████▏    | 235/452 [01:44<01:36,  2.26it/s, loss=66.5, v_num=36]Epoch 0:  52%|█████▏    | 236/452 [01:44<01:35,  2.26it/s, loss=66.5, v_num=36]Epoch 0:  52%|█████▏    | 236/452 [01:44<01:35,  2.26it/s, loss=66, v_num=36]  Epoch 0:  52%|█████▏    | 237/452 [01:45<01:35,  2.26it/s, loss=66, v_num=36]Epoch 0:  52%|█████▏    | 237/452 [01:45<01:35,  2.26it/s, loss=65.4, v_num=36]Epoch 0:  53%|█████▎    | 238/452 [01:45<01:34,  2.26it/s, loss=65.4, v_num=36]Epoch 0:  53%|█████▎    | 238/452 [01:45<01:34,  2.26it/s, loss=68, v_num=36]  Epoch 0:  53%|█████▎    | 239/452 [01:45<01:34,  2.26it/s, loss=68, v_num=36]Epoch 0:  53%|█████▎    | 239/452 [01:45<01:34,  2.26it/s, loss=68.7, v_num=36]Epoch 0:  53%|█████▎    | 240/452 [01:46<01:33,  2.26it/s, loss=68.7, v_num=36]Epoch 0:  53%|█████▎    | 240/452 [01:46<01:33,  2.26it/s, loss=69.5, v_num=36]Epoch 0:  53%|█████▎    | 241/452 [01:46<01:33,  2.26it/s, loss=69.5, v_num=36]Epoch 0:  53%|█████▎    | 241/452 [01:46<01:33,  2.26it/s, loss=67.4, v_num=36]Epoch 0:  54%|█████▎    | 242/452 [01:47<01:33,  2.26it/s, loss=67.4, v_num=36]Epoch 0:  54%|█████▎    | 242/452 [01:47<01:33,  2.26it/s, loss=71.3, v_num=36]Epoch 0:  54%|█████▍    | 243/452 [01:47<01:32,  2.26it/s, loss=71.3, v_num=36]Epoch 0:  54%|█████▍    | 243/452 [01:47<01:32,  2.26it/s, loss=69.8, v_num=36]Epoch 0:  54%|█████▍    | 244/452 [01:48<01:32,  2.26it/s, loss=69.8, v_num=36]Epoch 0:  54%|█████▍    | 244/452 [01:48<01:32,  2.26it/s, loss=71.3, v_num=36]Epoch 0:  54%|█████▍    | 245/452 [01:48<01:31,  2.26it/s, loss=71.3, v_num=36]Epoch 0:  54%|█████▍    | 245/452 [01:48<01:31,  2.26it/s, loss=74.1, v_num=36]Epoch 0:  54%|█████▍    | 246/452 [01:49<01:31,  2.26it/s, loss=74.1, v_num=36]Epoch 0:  54%|█████▍    | 246/452 [01:49<01:31,  2.26it/s, loss=77.7, v_num=36]Epoch 0:  55%|█████▍    | 247/452 [01:49<01:30,  2.26it/s, loss=77.7, v_num=36]Epoch 0:  55%|█████▍    | 247/452 [01:49<01:30,  2.26it/s, loss=80.8, v_num=36]Epoch 0:  55%|█████▍    | 248/452 [01:49<01:30,  2.26it/s, loss=80.8, v_num=36]Epoch 0:  55%|█████▍    | 248/452 [01:49<01:30,  2.26it/s, loss=82.2, v_num=36]Epoch 0:  55%|█████▌    | 249/452 [01:50<01:29,  2.26it/s, loss=82.2, v_num=36]Epoch 0:  55%|█████▌    | 249/452 [01:50<01:29,  2.26it/s, loss=85.3, v_num=36]Epoch 0:  55%|█████▌    | 250/452 [01:50<01:29,  2.26it/s, loss=85.3, v_num=36]Epoch 0:  55%|█████▌    | 250/452 [01:50<01:29,  2.26it/s, loss=84.9, v_num=36]Epoch 0:  56%|█████▌    | 251/452 [01:51<01:29,  2.26it/s, loss=84.9, v_num=36]Epoch 0:  56%|█████▌    | 251/452 [01:51<01:29,  2.26it/s, loss=82.3, v_num=36]Epoch 0:  56%|█████▌    | 252/452 [01:51<01:28,  2.26it/s, loss=82.3, v_num=36]Epoch 0:  56%|█████▌    | 252/452 [01:51<01:28,  2.26it/s, loss=77, v_num=36]  Epoch 0:  56%|█████▌    | 253/452 [01:52<01:28,  2.26it/s, loss=77, v_num=36]Epoch 0:  56%|█████▌    | 253/452 [01:52<01:28,  2.26it/s, loss=75.8, v_num=36]Epoch 0:  56%|█████▌    | 254/452 [01:52<01:27,  2.26it/s, loss=75.8, v_num=36]Epoch 0:  56%|█████▌    | 254/452 [01:52<01:27,  2.26it/s, loss=78.5, v_num=36]Epoch 0:  56%|█████▋    | 255/452 [01:53<01:27,  2.26it/s, loss=78.5, v_num=36]Epoch 0:  56%|█████▋    | 255/452 [01:53<01:27,  2.26it/s, loss=76.6, v_num=36]Epoch 0:  57%|█████▋    | 256/452 [01:53<01:26,  2.26it/s, loss=76.6, v_num=36]Epoch 0:  57%|█████▋    | 256/452 [01:53<01:26,  2.26it/s, loss=75.9, v_num=36]Epoch 0:  57%|█████▋    | 257/452 [01:53<01:26,  2.26it/s, loss=75.9, v_num=36]Epoch 0:  57%|█████▋    | 257/452 [01:53<01:26,  2.26it/s, loss=78.3, v_num=36]Epoch 0:  57%|█████▋    | 258/452 [01:54<01:26,  2.26it/s, loss=78.3, v_num=36]Epoch 0:  57%|█████▋    | 258/452 [01:54<01:26,  2.26it/s, loss=78.9, v_num=36]Epoch 0:  57%|█████▋    | 259/452 [01:54<01:25,  2.26it/s, loss=78.9, v_num=36]Epoch 0:  57%|█████▋    | 259/452 [01:54<01:25,  2.26it/s, loss=79.5, v_num=36]Epoch 0:  58%|█████▊    | 260/452 [01:55<01:25,  2.26it/s, loss=79.5, v_num=36]Epoch 0:  58%|█████▊    | 260/452 [01:55<01:25,  2.26it/s, loss=78.1, v_num=36]Epoch 0:  58%|█████▊    | 261/452 [01:55<01:24,  2.26it/s, loss=78.1, v_num=36]Epoch 0:  58%|█████▊    | 261/452 [01:55<01:24,  2.26it/s, loss=83, v_num=36]  Epoch 0:  58%|█████▊    | 262/452 [01:56<01:24,  2.26it/s, loss=83, v_num=36]Epoch 0:  58%|█████▊    | 262/452 [01:56<01:24,  2.26it/s, loss=80.3, v_num=36]Epoch 0:  58%|█████▊    | 263/452 [01:56<01:23,  2.26it/s, loss=80.3, v_num=36]Epoch 0:  58%|█████▊    | 263/452 [01:56<01:23,  2.26it/s, loss=84.6, v_num=36]Epoch 0:  58%|█████▊    | 264/452 [01:57<01:23,  2.26it/s, loss=84.6, v_num=36]Epoch 0:  58%|█████▊    | 264/452 [01:57<01:23,  2.26it/s, loss=84.4, v_num=36]Epoch 0:  59%|█████▊    | 265/452 [01:57<01:22,  2.26it/s, loss=84.4, v_num=36]Epoch 0:  59%|█████▊    | 265/452 [01:57<01:22,  2.26it/s, loss=87.1, v_num=36]Epoch 0:  59%|█████▉    | 266/452 [01:57<01:22,  2.26it/s, loss=87.1, v_num=36]Epoch 0:  59%|█████▉    | 266/452 [01:57<01:22,  2.26it/s, loss=82.2, v_num=36]Epoch 0:  59%|█████▉    | 267/452 [01:58<01:21,  2.26it/s, loss=82.2, v_num=36]Epoch 0:  59%|█████▉    | 267/452 [01:58<01:21,  2.26it/s, loss=80.7, v_num=36]Epoch 0:  59%|█████▉    | 268/452 [01:58<01:21,  2.26it/s, loss=80.7, v_num=36]Epoch 0:  59%|█████▉    | 268/452 [01:58<01:21,  2.26it/s, loss=77.7, v_num=36]Epoch 0:  60%|█████▉    | 269/452 [01:59<01:21,  2.26it/s, loss=77.7, v_num=36]Epoch 0:  60%|█████▉    | 269/452 [01:59<01:21,  2.26it/s, loss=80.1, v_num=36]Epoch 0:  60%|█████▉    | 270/452 [01:59<01:20,  2.26it/s, loss=80.1, v_num=36]Epoch 0:  60%|█████▉    | 270/452 [01:59<01:20,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  60%|█████▉    | 271/452 [02:00<01:20,  2.26it/s, loss=80.2, v_num=36]Epoch 0:  60%|█████▉    | 271/452 [02:00<01:20,  2.26it/s, loss=81, v_num=36]  Epoch 0:  60%|██████    | 272/452 [02:00<01:19,  2.26it/s, loss=81, v_num=36]Epoch 0:  60%|██████    | 272/452 [02:00<01:19,  2.26it/s, loss=83.4, v_num=36]Epoch 0:  60%|██████    | 273/452 [02:00<01:19,  2.26it/s, loss=83.4, v_num=36]Epoch 0:  60%|██████    | 273/452 [02:00<01:19,  2.26it/s, loss=83.6, v_num=36]Epoch 0:  61%|██████    | 274/452 [02:01<01:18,  2.26it/s, loss=83.6, v_num=36]Epoch 0:  61%|██████    | 274/452 [02:01<01:18,  2.26it/s, loss=82.4, v_num=36]Epoch 0:  61%|██████    | 275/452 [02:01<01:18,  2.26it/s, loss=82.4, v_num=36]Epoch 0:  61%|██████    | 275/452 [02:01<01:18,  2.26it/s, loss=80.4, v_num=36]Epoch 0:  61%|██████    | 276/452 [02:02<01:17,  2.26it/s, loss=80.4, v_num=36]Epoch 0:  61%|██████    | 276/452 [02:02<01:17,  2.26it/s, loss=81.4, v_num=36]Epoch 0:  61%|██████▏   | 277/452 [02:02<01:17,  2.26it/s, loss=81.4, v_num=36]Epoch 0:  61%|██████▏   | 277/452 [02:02<01:17,  2.26it/s, loss=80, v_num=36]  Epoch 0:  62%|██████▏   | 278/452 [02:03<01:17,  2.26it/s, loss=80, v_num=36]Epoch 0:  62%|██████▏   | 278/452 [02:03<01:17,  2.26it/s, loss=76.8, v_num=36]Epoch 0:  62%|██████▏   | 279/452 [02:03<01:16,  2.26it/s, loss=76.8, v_num=36]Epoch 0:  62%|██████▏   | 279/452 [02:03<01:16,  2.26it/s, loss=78.1, v_num=36]Epoch 0:  62%|██████▏   | 280/452 [02:04<01:16,  2.26it/s, loss=78.1, v_num=36]Epoch 0:  62%|██████▏   | 280/452 [02:04<01:16,  2.26it/s, loss=76.6, v_num=36]Epoch 0:  62%|██████▏   | 281/452 [02:04<01:15,  2.26it/s, loss=76.6, v_num=36]Epoch 0:  62%|██████▏   | 281/452 [02:04<01:15,  2.26it/s, loss=71.6, v_num=36]Epoch 0:  62%|██████▏   | 282/452 [02:04<01:15,  2.26it/s, loss=71.6, v_num=36]Epoch 0:  62%|██████▏   | 282/452 [02:04<01:15,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  63%|██████▎   | 283/452 [02:05<01:14,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  63%|██████▎   | 283/452 [02:05<01:14,  2.26it/s, loss=68.3, v_num=36]Epoch 0:  63%|██████▎   | 284/452 [02:05<01:14,  2.26it/s, loss=68.3, v_num=36]Epoch 0:  63%|██████▎   | 284/452 [02:05<01:14,  2.26it/s, loss=67, v_num=36]  Epoch 0:  63%|██████▎   | 285/452 [02:06<01:13,  2.26it/s, loss=67, v_num=36]Epoch 0:  63%|██████▎   | 285/452 [02:06<01:13,  2.26it/s, loss=65, v_num=36]Epoch 0:  63%|██████▎   | 286/452 [02:06<01:13,  2.26it/s, loss=65, v_num=36]Epoch 0:  63%|██████▎   | 286/452 [02:06<01:13,  2.26it/s, loss=67.3, v_num=36]Epoch 0:  63%|██████▎   | 287/452 [02:07<01:13,  2.26it/s, loss=67.3, v_num=36]Epoch 0:  63%|██████▎   | 287/452 [02:07<01:13,  2.26it/s, loss=64.5, v_num=36]Epoch 0:  64%|██████▎   | 288/452 [02:07<01:12,  2.26it/s, loss=64.5, v_num=36]Epoch 0:  64%|██████▎   | 288/452 [02:07<01:12,  2.26it/s, loss=70.7, v_num=36]Epoch 0:  64%|██████▍   | 289/452 [02:08<01:12,  2.26it/s, loss=70.7, v_num=36]Epoch 0:  64%|██████▍   | 289/452 [02:08<01:12,  2.26it/s, loss=64.7, v_num=36]Epoch 0:  64%|██████▍   | 290/452 [02:08<01:11,  2.26it/s, loss=64.7, v_num=36]Epoch 0:  64%|██████▍   | 290/452 [02:08<01:11,  2.26it/s, loss=65.8, v_num=36]Epoch 0:  64%|██████▍   | 291/452 [02:08<01:11,  2.26it/s, loss=65.8, v_num=36]Epoch 0:  64%|██████▍   | 291/452 [02:08<01:11,  2.26it/s, loss=64.8, v_num=36]Epoch 0:  65%|██████▍   | 292/452 [02:09<01:10,  2.26it/s, loss=64.8, v_num=36]Epoch 0:  65%|██████▍   | 292/452 [02:09<01:10,  2.26it/s, loss=64.6, v_num=36]Epoch 0:  65%|██████▍   | 293/452 [02:09<01:10,  2.26it/s, loss=64.6, v_num=36]Epoch 0:  65%|██████▍   | 293/452 [02:09<01:10,  2.26it/s, loss=64.8, v_num=36]Epoch 0:  65%|██████▌   | 294/452 [02:10<01:10,  2.26it/s, loss=64.8, v_num=36]Epoch 0:  65%|██████▌   | 294/452 [02:10<01:10,  2.26it/s, loss=64.4, v_num=36]Epoch 0:  65%|██████▌   | 295/452 [02:10<01:09,  2.26it/s, loss=64.4, v_num=36]Epoch 0:  65%|██████▌   | 295/452 [02:10<01:09,  2.26it/s, loss=65.5, v_num=36]Epoch 0:  65%|██████▌   | 296/452 [02:11<01:09,  2.26it/s, loss=65.5, v_num=36]Epoch 0:  65%|██████▌   | 296/452 [02:11<01:09,  2.26it/s, loss=66.6, v_num=36]Epoch 0:  66%|██████▌   | 297/452 [02:11<01:08,  2.26it/s, loss=66.6, v_num=36]Epoch 0:  66%|██████▌   | 297/452 [02:11<01:08,  2.26it/s, loss=68, v_num=36]  Epoch 0:  66%|██████▌   | 298/452 [02:12<01:08,  2.26it/s, loss=68, v_num=36]Epoch 0:  66%|██████▌   | 298/452 [02:12<01:08,  2.26it/s, loss=70.7, v_num=36]Epoch 0:  66%|██████▌   | 299/452 [02:12<01:07,  2.26it/s, loss=70.7, v_num=36]Epoch 0:  66%|██████▌   | 299/452 [02:12<01:07,  2.26it/s, loss=68.5, v_num=36]Epoch 0:  66%|██████▋   | 300/452 [02:12<01:07,  2.26it/s, loss=68.5, v_num=36]Epoch 0:  66%|██████▋   | 300/452 [02:12<01:07,  2.26it/s, loss=70.3, v_num=36]Epoch 0:  67%|██████▋   | 301/452 [02:13<01:06,  2.26it/s, loss=70.3, v_num=36]Epoch 0:  67%|██████▋   | 301/452 [02:13<01:06,  2.26it/s, loss=74.1, v_num=36]Epoch 0:  67%|██████▋   | 302/452 [02:13<01:06,  2.26it/s, loss=74.1, v_num=36]Epoch 0:  67%|██████▋   | 302/452 [02:13<01:06,  2.26it/s, loss=73.3, v_num=36]Epoch 0:  67%|██████▋   | 303/452 [02:14<01:06,  2.26it/s, loss=73.3, v_num=36]Epoch 0:  67%|██████▋   | 303/452 [02:14<01:06,  2.26it/s, loss=72.8, v_num=36]Epoch 0:  67%|██████▋   | 304/452 [02:14<01:05,  2.26it/s, loss=72.8, v_num=36]Epoch 0:  67%|██████▋   | 304/452 [02:14<01:05,  2.26it/s, loss=72.4, v_num=36]Epoch 0:  67%|██████▋   | 305/452 [02:15<01:05,  2.26it/s, loss=72.4, v_num=36]Epoch 0:  67%|██████▋   | 305/452 [02:15<01:05,  2.26it/s, loss=69.9, v_num=36]Epoch 0:  68%|██████▊   | 306/452 [02:15<01:04,  2.26it/s, loss=69.9, v_num=36]Epoch 0:  68%|██████▊   | 306/452 [02:15<01:04,  2.26it/s, loss=69.9, v_num=36]Epoch 0:  68%|██████▊   | 307/452 [02:16<01:04,  2.26it/s, loss=69.9, v_num=36]Epoch 0:  68%|██████▊   | 307/452 [02:16<01:04,  2.26it/s, loss=73.5, v_num=36]Epoch 0:  68%|██████▊   | 308/452 [02:16<01:03,  2.26it/s, loss=73.5, v_num=36]Epoch 0:  68%|██████▊   | 308/452 [02:16<01:03,  2.26it/s, loss=69, v_num=36]  Epoch 0:  68%|██████▊   | 309/452 [02:16<01:03,  2.26it/s, loss=69, v_num=36]Epoch 0:  68%|██████▊   | 309/452 [02:16<01:03,  2.26it/s, loss=73.8, v_num=36]Epoch 0:  69%|██████▊   | 310/452 [02:17<01:02,  2.26it/s, loss=73.8, v_num=36]Epoch 0:  69%|██████▊   | 310/452 [02:17<01:02,  2.26it/s, loss=73.1, v_num=36]Epoch 0:  69%|██████▉   | 311/452 [02:17<01:02,  2.26it/s, loss=73.1, v_num=36]Epoch 0:  69%|██████▉   | 311/452 [02:17<01:02,  2.26it/s, loss=72.9, v_num=36]Epoch 0:  69%|██████▉   | 312/452 [02:18<01:02,  2.26it/s, loss=72.9, v_num=36]Epoch 0:  69%|██████▉   | 312/452 [02:18<01:02,  2.26it/s, loss=71, v_num=36]  Epoch 0:  69%|██████▉   | 313/452 [02:18<01:01,  2.26it/s, loss=71, v_num=36]Epoch 0:  69%|██████▉   | 313/452 [02:18<01:01,  2.26it/s, loss=70.2, v_num=36]Epoch 0:  69%|██████▉   | 314/452 [02:19<01:01,  2.26it/s, loss=70.2, v_num=36]Epoch 0:  69%|██████▉   | 314/452 [02:19<01:01,  2.26it/s, loss=70.2, v_num=36]Epoch 0:  70%|██████▉   | 315/452 [02:19<01:00,  2.26it/s, loss=70.2, v_num=36]Epoch 0:  70%|██████▉   | 315/452 [02:19<01:00,  2.26it/s, loss=71.4, v_num=36]Epoch 0:  70%|██████▉   | 316/452 [02:20<01:00,  2.26it/s, loss=71.4, v_num=36]Epoch 0:  70%|██████▉   | 316/452 [02:20<01:00,  2.26it/s, loss=66.8, v_num=36]Epoch 0:  70%|███████   | 317/452 [02:20<00:59,  2.26it/s, loss=66.8, v_num=36]Epoch 0:  70%|███████   | 317/452 [02:20<00:59,  2.26it/s, loss=67.4, v_num=36]Epoch 0:  70%|███████   | 318/452 [02:20<00:59,  2.26it/s, loss=67.4, v_num=36]Epoch 0:  70%|███████   | 318/452 [02:20<00:59,  2.26it/s, loss=68.9, v_num=36]Epoch 0:  71%|███████   | 319/452 [02:21<00:58,  2.26it/s, loss=68.9, v_num=36]Epoch 0:  71%|███████   | 319/452 [02:21<00:58,  2.26it/s, loss=68, v_num=36]  Epoch 0:  71%|███████   | 320/452 [02:21<00:58,  2.26it/s, loss=68, v_num=36]Epoch 0:  71%|███████   | 320/452 [02:21<00:58,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  71%|███████   | 321/452 [02:22<00:58,  2.26it/s, loss=71.5, v_num=36]Epoch 0:  71%|███████   | 321/452 [02:22<00:58,  2.26it/s, loss=70, v_num=36]  Epoch 0:  71%|███████   | 322/452 [02:22<00:57,  2.26it/s, loss=70, v_num=36]Epoch 0:  71%|███████   | 322/452 [02:22<00:57,  2.26it/s, loss=73.4, v_num=36]Epoch 0:  71%|███████▏  | 323/452 [02:23<00:57,  2.26it/s, loss=73.4, v_num=36]Epoch 0:  71%|███████▏  | 323/452 [02:23<00:57,  2.26it/s, loss=72.3, v_num=36]Epoch 0:  72%|███████▏  | 324/452 [02:23<00:56,  2.26it/s, loss=72.3, v_num=36]Epoch 0:  72%|███████▏  | 324/452 [02:23<00:56,  2.26it/s, loss=77.3, v_num=36]Epoch 0:  72%|███████▏  | 325/452 [02:24<00:56,  2.26it/s, loss=77.3, v_num=36]Epoch 0:  72%|███████▏  | 325/452 [02:24<00:56,  2.26it/s, loss=78.6, v_num=36]Epoch 0:  72%|███████▏  | 326/452 [02:24<00:55,  2.26it/s, loss=78.6, v_num=36]Epoch 0:  72%|███████▏  | 326/452 [02:24<00:55,  2.26it/s, loss=79, v_num=36]  Epoch 0:  72%|███████▏  | 327/452 [02:24<00:55,  2.26it/s, loss=79, v_num=36]Epoch 0:  72%|███████▏  | 327/452 [02:24<00:55,  2.26it/s, loss=76.6, v_num=36]Epoch 0:  73%|███████▎  | 328/452 [02:25<00:54,  2.26it/s, loss=76.6, v_num=36]Epoch 0:  73%|███████▎  | 328/452 [02:25<00:54,  2.26it/s, loss=77.8, v_num=36]Epoch 0:  73%|███████▎  | 329/452 [02:25<00:54,  2.26it/s, loss=77.8, v_num=36]Epoch 0:  73%|███████▎  | 329/452 [02:25<00:54,  2.26it/s, loss=75.5, v_num=36]Epoch 0:  73%|███████▎  | 330/452 [02:26<00:54,  2.25it/s, loss=75.5, v_num=36]Epoch 0:  73%|███████▎  | 330/452 [02:26<00:54,  2.25it/s, loss=71.9, v_num=36]Epoch 0:  73%|███████▎  | 331/452 [02:26<00:53,  2.25it/s, loss=71.9, v_num=36]Epoch 0:  73%|███████▎  | 331/452 [02:26<00:53,  2.25it/s, loss=70.4, v_num=36]Epoch 0:  73%|███████▎  | 332/452 [02:27<00:53,  2.25it/s, loss=70.4, v_num=36]Epoch 0:  73%|███████▎  | 332/452 [02:27<00:53,  2.25it/s, loss=70.6, v_num=36]Epoch 0:  74%|███████▎  | 333/452 [02:27<00:52,  2.25it/s, loss=70.6, v_num=36]Epoch 0:  74%|███████▎  | 333/452 [02:27<00:52,  2.25it/s, loss=74.8, v_num=36]Epoch 0:  74%|███████▍  | 334/452 [02:28<00:52,  2.25it/s, loss=74.8, v_num=36]Epoch 0:  74%|███████▍  | 334/452 [02:28<00:52,  2.25it/s, loss=74.1, v_num=36]Epoch 0:  74%|███████▍  | 335/452 [02:28<00:51,  2.25it/s, loss=74.1, v_num=36]Epoch 0:  74%|███████▍  | 335/452 [02:28<00:51,  2.25it/s, loss=71, v_num=36]  Epoch 0:  74%|███████▍  | 336/452 [02:29<00:51,  2.25it/s, loss=71, v_num=36]Epoch 0:  74%|███████▍  | 336/452 [02:29<00:51,  2.25it/s, loss=73.6, v_num=36]Epoch 0:  75%|███████▍  | 337/452 [02:29<00:51,  2.25it/s, loss=73.6, v_num=36]Epoch 0:  75%|███████▍  | 337/452 [02:29<00:51,  2.25it/s, loss=73.2, v_num=36]Epoch 0:  75%|███████▍  | 338/452 [02:30<00:50,  2.25it/s, loss=73.2, v_num=36]Epoch 0:  75%|███████▍  | 338/452 [02:30<00:50,  2.25it/s, loss=71.6, v_num=36]Epoch 0:  75%|███████▌  | 339/452 [02:30<00:50,  2.25it/s, loss=71.6, v_num=36]Epoch 0:  75%|███████▌  | 339/452 [02:30<00:50,  2.25it/s, loss=70.4, v_num=36]Epoch 0:  75%|███████▌  | 340/452 [02:30<00:49,  2.25it/s, loss=70.4, v_num=36]Epoch 0:  75%|███████▌  | 340/452 [02:30<00:49,  2.25it/s, loss=69, v_num=36]  Epoch 0:  75%|███████▌  | 341/452 [02:31<00:49,  2.25it/s, loss=69, v_num=36]Epoch 0:  75%|███████▌  | 341/452 [02:31<00:49,  2.25it/s, loss=67.4, v_num=36]Epoch 0:  76%|███████▌  | 342/452 [02:31<00:48,  2.25it/s, loss=67.4, v_num=36]Epoch 0:  76%|███████▌  | 342/452 [02:31<00:48,  2.25it/s, loss=68.2, v_num=36]Epoch 0:  76%|███████▌  | 343/452 [02:32<00:48,  2.25it/s, loss=68.2, v_num=36]Epoch 0:  76%|███████▌  | 343/452 [02:32<00:48,  2.25it/s, loss=67, v_num=36]  Epoch 0:  76%|███████▌  | 344/452 [02:32<00:47,  2.25it/s, loss=67, v_num=36]Epoch 0:  76%|███████▌  | 344/452 [02:32<00:47,  2.25it/s, loss=66.6, v_num=36]Epoch 0:  76%|███████▋  | 345/452 [02:33<00:47,  2.25it/s, loss=66.6, v_num=36]Epoch 0:  76%|███████▋  | 345/452 [02:33<00:47,  2.25it/s, loss=67.8, v_num=36]Epoch 0:  77%|███████▋  | 346/452 [02:33<00:47,  2.25it/s, loss=67.8, v_num=36]Epoch 0:  77%|███████▋  | 346/452 [02:33<00:47,  2.25it/s, loss=69.9, v_num=36]Epoch 0:  77%|███████▋  | 347/452 [02:34<00:46,  2.25it/s, loss=69.9, v_num=36]Epoch 0:  77%|███████▋  | 347/452 [02:34<00:46,  2.25it/s, loss=72.1, v_num=36]Epoch 0:  77%|███████▋  | 348/452 [02:34<00:46,  2.25it/s, loss=72.1, v_num=36]Epoch 0:  77%|███████▋  | 348/452 [02:34<00:46,  2.25it/s, loss=71.3, v_num=36]Epoch 0:  77%|███████▋  | 349/452 [02:35<00:45,  2.25it/s, loss=71.3, v_num=36]Epoch 0:  77%|███████▋  | 349/452 [02:35<00:45,  2.25it/s, loss=71.5, v_num=36]Epoch 0:  77%|███████▋  | 350/452 [02:35<00:45,  2.25it/s, loss=71.5, v_num=36]Epoch 0:  77%|███████▋  | 350/452 [02:35<00:45,  2.25it/s, loss=74.9, v_num=36]Epoch 0:  78%|███████▊  | 351/452 [02:35<00:44,  2.25it/s, loss=74.9, v_num=36]Epoch 0:  78%|███████▊  | 351/452 [02:35<00:44,  2.25it/s, loss=74.6, v_num=36]Epoch 0:  78%|███████▊  | 352/452 [02:36<00:44,  2.25it/s, loss=74.6, v_num=36]Epoch 0:  78%|███████▊  | 352/452 [02:36<00:44,  2.25it/s, loss=76.1, v_num=36]Epoch 0:  78%|███████▊  | 353/452 [02:36<00:44,  2.25it/s, loss=76.1, v_num=36]Epoch 0:  78%|███████▊  | 353/452 [02:36<00:44,  2.25it/s, loss=73.2, v_num=36]Epoch 0:  78%|███████▊  | 354/452 [02:37<00:43,  2.25it/s, loss=73.2, v_num=36]Epoch 0:  78%|███████▊  | 354/452 [02:37<00:43,  2.25it/s, loss=72.3, v_num=36]Epoch 0:  79%|███████▊  | 355/452 [02:37<00:43,  2.25it/s, loss=72.3, v_num=36]Epoch 0:  79%|███████▊  | 355/452 [02:37<00:43,  2.25it/s, loss=71.9, v_num=36]Epoch 0:  79%|███████▉  | 356/452 [02:38<00:42,  2.25it/s, loss=71.9, v_num=36]Epoch 0:  79%|███████▉  | 356/452 [02:38<00:42,  2.25it/s, loss=72.6, v_num=36]Epoch 0:  79%|███████▉  | 357/452 [02:38<00:42,  2.25it/s, loss=72.6, v_num=36]Epoch 0:  79%|███████▉  | 357/452 [02:38<00:42,  2.25it/s, loss=72.3, v_num=36]Epoch 0:  79%|███████▉  | 358/452 [02:39<00:41,  2.25it/s, loss=72.3, v_num=36]Epoch 0:  79%|███████▉  | 358/452 [02:39<00:41,  2.25it/s, loss=71.5, v_num=36]Epoch 0:  79%|███████▉  | 359/452 [02:39<00:41,  2.25it/s, loss=71.5, v_num=36]Epoch 0:  79%|███████▉  | 359/452 [02:39<00:41,  2.25it/s, loss=71.5, v_num=36]Epoch 0:  80%|███████▉  | 360/452 [02:40<00:40,  2.25it/s, loss=71.5, v_num=36]Epoch 0:  80%|███████▉  | 360/452 [02:40<00:40,  2.25it/s, loss=67.7, v_num=36]Epoch 0:  80%|███████▉  | 361/452 [02:40<00:40,  2.25it/s, loss=67.7, v_num=36]Epoch 0:  80%|███████▉  | 361/452 [02:40<00:40,  2.25it/s, loss=69, v_num=36]  Epoch 0:  80%|████████  | 362/452 [02:41<00:40,  2.25it/s, loss=69, v_num=36]Epoch 0:  80%|████████  | 362/452 [02:41<00:40,  2.25it/s, loss=67.5, v_num=36]Epoch 0:  80%|████████  | 363/452 [02:41<00:39,  2.25it/s, loss=67.5, v_num=36]Epoch 0:  80%|████████  | 363/452 [02:41<00:39,  2.25it/s, loss=70, v_num=36]  Epoch 0:  81%|████████  | 364/452 [02:41<00:39,  2.25it/s, loss=70, v_num=36]Epoch 0:  81%|████████  | 364/452 [02:41<00:39,  2.25it/s, loss=69.8, v_num=36]Epoch 0:  81%|████████  | 365/452 [02:42<00:38,  2.25it/s, loss=69.8, v_num=36]Epoch 0:  81%|████████  | 365/452 [02:42<00:38,  2.25it/s, loss=67.8, v_num=36]Epoch 0:  81%|████████  | 366/452 [02:42<00:38,  2.25it/s, loss=67.8, v_num=36]Epoch 0:  81%|████████  | 366/452 [02:42<00:38,  2.25it/s, loss=68.2, v_num=36]Epoch 0:  81%|████████  | 367/452 [02:43<00:37,  2.25it/s, loss=68.2, v_num=36]Epoch 0:  81%|████████  | 367/452 [02:43<00:37,  2.25it/s, loss=66.4, v_num=36]Epoch 0:  81%|████████▏ | 368/452 [02:43<00:37,  2.25it/s, loss=66.4, v_num=36]Epoch 0:  81%|████████▏ | 368/452 [02:43<00:37,  2.25it/s, loss=66.2, v_num=36]Epoch 0:  82%|████████▏ | 369/452 [02:44<00:36,  2.24it/s, loss=66.2, v_num=36]Epoch 0:  82%|████████▏ | 369/452 [02:44<00:36,  2.24it/s, loss=67.5, v_num=36]Epoch 0:  82%|████████▏ | 370/452 [02:44<00:36,  2.24it/s, loss=67.5, v_num=36]Epoch 0:  82%|████████▏ | 370/452 [02:44<00:36,  2.24it/s, loss=66.2, v_num=36]Epoch 0:  82%|████████▏ | 371/452 [02:45<00:36,  2.24it/s, loss=66.2, v_num=36]Epoch 0:  82%|████████▏ | 371/452 [02:45<00:36,  2.24it/s, loss=67.3, v_num=36]Epoch 0:  82%|████████▏ | 372/452 [02:45<00:35,  2.24it/s, loss=67.3, v_num=36]Epoch 0:  82%|████████▏ | 372/452 [02:45<00:35,  2.24it/s, loss=67.7, v_num=36]Epoch 0:  83%|████████▎ | 373/452 [02:46<00:35,  2.24it/s, loss=67.7, v_num=36]Epoch 0:  83%|████████▎ | 373/452 [02:46<00:35,  2.24it/s, loss=69.4, v_num=36]Epoch 0:  83%|████████▎ | 374/452 [02:46<00:34,  2.24it/s, loss=69.4, v_num=36]Epoch 0:  83%|████████▎ | 374/452 [02:46<00:34,  2.24it/s, loss=67.1, v_num=36]Epoch 0:  83%|████████▎ | 375/452 [02:47<00:34,  2.24it/s, loss=67.1, v_num=36]Epoch 0:  83%|████████▎ | 375/452 [02:47<00:34,  2.24it/s, loss=68.3, v_num=36]Epoch 0:  83%|████████▎ | 376/452 [02:47<00:33,  2.24it/s, loss=68.3, v_num=36]Epoch 0:  83%|████████▎ | 376/452 [02:47<00:33,  2.24it/s, loss=66.1, v_num=36]Epoch 0:  83%|████████▎ | 377/452 [02:47<00:33,  2.24it/s, loss=66.1, v_num=36]Epoch 0:  83%|████████▎ | 377/452 [02:47<00:33,  2.24it/s, loss=63.4, v_num=36]Epoch 0:  84%|████████▎ | 378/452 [02:48<00:32,  2.24it/s, loss=63.4, v_num=36]Epoch 0:  84%|████████▎ | 378/452 [02:48<00:32,  2.24it/s, loss=60.9, v_num=36]Epoch 0:  84%|████████▍ | 379/452 [02:48<00:32,  2.24it/s, loss=60.9, v_num=36]Epoch 0:  84%|████████▍ | 379/452 [02:48<00:32,  2.24it/s, loss=63.7, v_num=36]Epoch 0:  84%|████████▍ | 380/452 [02:49<00:32,  2.24it/s, loss=63.7, v_num=36]Epoch 0:  84%|████████▍ | 380/452 [02:49<00:32,  2.24it/s, loss=66.9, v_num=36]Epoch 0:  84%|████████▍ | 381/452 [02:49<00:31,  2.24it/s, loss=66.9, v_num=36]Epoch 0:  84%|████████▍ | 381/452 [02:49<00:31,  2.24it/s, loss=67.6, v_num=36]Epoch 0:  85%|████████▍ | 382/452 [02:50<00:31,  2.24it/s, loss=67.6, v_num=36]Epoch 0:  85%|████████▍ | 382/452 [02:50<00:31,  2.24it/s, loss=68.8, v_num=36]Epoch 0:  85%|████████▍ | 383/452 [02:50<00:30,  2.24it/s, loss=68.8, v_num=36]Epoch 0:  85%|████████▍ | 383/452 [02:50<00:30,  2.24it/s, loss=66.2, v_num=36]Epoch 0:  85%|████████▍ | 384/452 [02:51<00:30,  2.24it/s, loss=66.2, v_num=36]Epoch 0:  85%|████████▍ | 384/452 [02:51<00:30,  2.24it/s, loss=64.7, v_num=36]Epoch 0:  85%|████████▌ | 385/452 [02:51<00:29,  2.24it/s, loss=64.7, v_num=36]Epoch 0:  85%|████████▌ | 385/452 [02:51<00:29,  2.24it/s, loss=68.4, v_num=36]Epoch 0:  85%|████████▌ | 386/452 [02:52<00:29,  2.24it/s, loss=68.4, v_num=36]Epoch 0:  85%|████████▌ | 386/452 [02:52<00:29,  2.24it/s, loss=65.7, v_num=36]Epoch 0:  86%|████████▌ | 387/452 [02:52<00:28,  2.24it/s, loss=65.7, v_num=36]Epoch 0:  86%|████████▌ | 387/452 [02:52<00:28,  2.24it/s, loss=69, v_num=36]  Epoch 0:  86%|████████▌ | 388/452 [02:53<00:28,  2.24it/s, loss=69, v_num=36]Epoch 0:  86%|████████▌ | 388/452 [02:53<00:28,  2.24it/s, loss=73, v_num=36]Epoch 0:  86%|████████▌ | 389/452 [02:53<00:28,  2.24it/s, loss=73, v_num=36]Epoch 0:  86%|████████▌ | 389/452 [02:53<00:28,  2.24it/s, loss=74.3, v_num=36]Epoch 0:  86%|████████▋ | 390/452 [02:53<00:27,  2.24it/s, loss=74.3, v_num=36]Epoch 0:  86%|████████▋ | 390/452 [02:53<00:27,  2.24it/s, loss=76, v_num=36]  Epoch 0:  87%|████████▋ | 391/452 [02:54<00:27,  2.24it/s, loss=76, v_num=36]Epoch 0:  87%|████████▋ | 391/452 [02:54<00:27,  2.24it/s, loss=74.8, v_num=36]Epoch 0:  87%|████████▋ | 392/452 [02:54<00:26,  2.24it/s, loss=74.8, v_num=36]Epoch 0:  87%|████████▋ | 392/452 [02:54<00:26,  2.24it/s, loss=72.9, v_num=36]Epoch 0:  87%|████████▋ | 393/452 [02:55<00:26,  2.24it/s, loss=72.9, v_num=36]Epoch 0:  87%|████████▋ | 393/452 [02:55<00:26,  2.24it/s, loss=71.2, v_num=36]Epoch 0:  87%|████████▋ | 394/452 [02:55<00:25,  2.24it/s, loss=71.2, v_num=36]Epoch 0:  87%|████████▋ | 394/452 [02:55<00:25,  2.24it/s, loss=70.7, v_num=36]Epoch 0:  87%|████████▋ | 395/452 [02:56<00:25,  2.24it/s, loss=70.7, v_num=36]Epoch 0:  87%|████████▋ | 395/452 [02:56<00:25,  2.24it/s, loss=75.8, v_num=36]Epoch 0:  88%|████████▊ | 396/452 [02:56<00:25,  2.24it/s, loss=75.8, v_num=36]Epoch 0:  88%|████████▊ | 396/452 [02:56<00:25,  2.24it/s, loss=77.3, v_num=36]Epoch 0:  88%|████████▊ | 397/452 [02:57<00:24,  2.24it/s, loss=77.3, v_num=36]Epoch 0:  88%|████████▊ | 397/452 [02:57<00:24,  2.24it/s, loss=78, v_num=36]  Epoch 0:  88%|████████▊ | 398/452 [02:57<00:24,  2.24it/s, loss=78, v_num=36]Epoch 0:  88%|████████▊ | 398/452 [02:57<00:24,  2.24it/s, loss=83.1, v_num=36]Epoch 0:  88%|████████▊ | 399/452 [02:58<00:23,  2.24it/s, loss=83.1, v_num=36]Epoch 0:  88%|████████▊ | 399/452 [02:58<00:23,  2.24it/s, loss=81.4, v_num=36]Epoch 0:  88%|████████▊ | 400/452 [02:58<00:23,  2.24it/s, loss=81.4, v_num=36]Epoch 0:  88%|████████▊ | 400/452 [02:58<00:23,  2.24it/s, loss=81.2, v_num=36]Epoch 0:  89%|████████▊ | 401/452 [02:59<00:22,  2.24it/s, loss=81.2, v_num=36]Epoch 0:  89%|████████▊ | 401/452 [02:59<00:22,  2.24it/s, loss=79, v_num=36]  Epoch 0:  89%|████████▉ | 402/452 [02:59<00:22,  2.24it/s, loss=79, v_num=36]Epoch 0:  89%|████████▉ | 402/452 [02:59<00:22,  2.24it/s, loss=77.3, v_num=36]Epoch 0:  89%|████████▉ | 403/452 [03:00<00:21,  2.24it/s, loss=77.3, v_num=36]Epoch 0:  89%|████████▉ | 403/452 [03:00<00:21,  2.24it/s, loss=78.3, v_num=36]Epoch 0:  89%|████████▉ | 404/452 [03:00<00:21,  2.24it/s, loss=78.3, v_num=36]Epoch 0:  89%|████████▉ | 404/452 [03:00<00:21,  2.24it/s, loss=76.2, v_num=36]Epoch 0:  90%|████████▉ | 405/452 [03:01<00:21,  2.24it/s, loss=76.2, v_num=36]Epoch 0:  90%|████████▉ | 405/452 [03:01<00:21,  2.24it/s, loss=72.6, v_num=36]Epoch 0:  90%|████████▉ | 406/452 [03:01<00:20,  2.24it/s, loss=72.6, v_num=36]Epoch 0:  90%|████████▉ | 406/452 [03:01<00:20,  2.24it/s, loss=72.3, v_num=36]Epoch 0:  90%|█████████ | 407/452 [03:02<00:20,  2.23it/s, loss=72.3, v_num=36]Epoch 0:  90%|█████████ | 407/452 [03:02<00:20,  2.23it/s, loss=67.7, v_num=36]Epoch 0:  90%|█████████ | 408/452 [03:02<00:19,  2.23it/s, loss=67.7, v_num=36]Epoch 0:  90%|█████████ | 408/452 [03:02<00:19,  2.23it/s, loss=67.3, v_num=36]Epoch 0:  90%|█████████ | 409/452 [03:03<00:19,  2.23it/s, loss=67.3, v_num=36]Epoch 0:  90%|█████████ | 409/452 [03:03<00:19,  2.23it/s, loss=66.5, v_num=36]Epoch 0:  91%|█████████ | 410/452 [03:03<00:18,  2.23it/s, loss=66.5, v_num=36]Epoch 0:  91%|█████████ | 410/452 [03:03<00:18,  2.23it/s, loss=62.1, v_num=36]Epoch 0:  91%|█████████ | 411/452 [03:04<00:18,  2.23it/s, loss=62.1, v_num=36]Epoch 0:  91%|█████████ | 411/452 [03:04<00:18,  2.23it/s, loss=65.1, v_num=36]Epoch 0:  91%|█████████ | 412/452 [03:04<00:17,  2.23it/s, loss=65.1, v_num=36]Epoch 0:  91%|█████████ | 412/452 [03:04<00:17,  2.23it/s, loss=66.3, v_num=36]Epoch 0:  91%|█████████▏| 413/452 [03:04<00:17,  2.23it/s, loss=66.3, v_num=36]Epoch 0:  91%|█████████▏| 413/452 [03:04<00:17,  2.23it/s, loss=69.5, v_num=36]Epoch 0:  92%|█████████▏| 414/452 [03:05<00:17,  2.23it/s, loss=69.5, v_num=36]Epoch 0:  92%|█████████▏| 414/452 [03:05<00:17,  2.23it/s, loss=70.3, v_num=36]Epoch 0:  92%|█████████▏| 415/452 [03:05<00:16,  2.23it/s, loss=70.3, v_num=36]Epoch 0:  92%|█████████▏| 415/452 [03:05<00:16,  2.23it/s, loss=66.4, v_num=36]Epoch 0:  92%|█████████▏| 416/452 [03:06<00:16,  2.23it/s, loss=66.4, v_num=36]Epoch 0:  92%|█████████▏| 416/452 [03:06<00:16,  2.23it/s, loss=68.9, v_num=36]Epoch 0:  92%|█████████▏| 417/452 [03:06<00:15,  2.23it/s, loss=68.9, v_num=36]Epoch 0:  92%|█████████▏| 417/452 [03:06<00:15,  2.23it/s, loss=68.5, v_num=36]Epoch 0:  92%|█████████▏| 418/452 [03:07<00:15,  2.23it/s, loss=68.5, v_num=36]Epoch 0:  92%|█████████▏| 418/452 [03:07<00:15,  2.23it/s, loss=65.8, v_num=36]Epoch 0:  93%|█████████▎| 419/452 [03:07<00:14,  2.23it/s, loss=65.8, v_num=36]Epoch 0:  93%|█████████▎| 419/452 [03:07<00:14,  2.23it/s, loss=64.6, v_num=36]Epoch 0:  93%|█████████▎| 420/452 [03:08<00:14,  2.23it/s, loss=64.6, v_num=36]Epoch 0:  93%|█████████▎| 420/452 [03:08<00:14,  2.23it/s, loss=65, v_num=36]  Epoch 0:  93%|█████████▎| 421/452 [03:08<00:13,  2.23it/s, loss=65, v_num=36]Epoch 0:  93%|█████████▎| 421/452 [03:08<00:13,  2.23it/s, loss=67.2, v_num=36]Epoch 0:  93%|█████████▎| 422/452 [03:09<00:13,  2.23it/s, loss=67.2, v_num=36]Epoch 0:  93%|█████████▎| 422/452 [03:09<00:13,  2.23it/s, loss=68.9, v_num=36]Epoch 0:  94%|█████████▎| 423/452 [03:09<00:13,  2.23it/s, loss=68.9, v_num=36]Epoch 0:  94%|█████████▎| 423/452 [03:09<00:13,  2.23it/s, loss=66.7, v_num=36]Epoch 0:  94%|█████████▍| 424/452 [03:10<00:12,  2.23it/s, loss=66.7, v_num=36]Epoch 0:  94%|█████████▍| 424/452 [03:10<00:12,  2.23it/s, loss=68.6, v_num=36]Epoch 0:  94%|█████████▍| 425/452 [03:10<00:12,  2.23it/s, loss=68.6, v_num=36]Epoch 0:  94%|█████████▍| 425/452 [03:10<00:12,  2.23it/s, loss=70.8, v_num=36]Epoch 0:  94%|█████████▍| 426/452 [03:11<00:11,  2.23it/s, loss=70.8, v_num=36]Epoch 0:  94%|█████████▍| 426/452 [03:11<00:11,  2.23it/s, loss=71.7, v_num=36]Epoch 0:  94%|█████████▍| 427/452 [03:11<00:11,  2.23it/s, loss=71.7, v_num=36]Epoch 0:  94%|█████████▍| 427/452 [03:11<00:11,  2.23it/s, loss=74.8, v_num=36]Epoch 0:  95%|█████████▍| 428/452 [03:12<00:10,  2.23it/s, loss=74.8, v_num=36]Epoch 0:  95%|█████████▍| 428/452 [03:12<00:10,  2.23it/s, loss=74.2, v_num=36]Epoch 0:  95%|█████████▍| 429/452 [03:12<00:10,  2.23it/s, loss=74.2, v_num=36]Epoch 0:  95%|█████████▍| 429/452 [03:12<00:10,  2.23it/s, loss=74.3, v_num=36]Epoch 0:  95%|█████████▌| 430/452 [03:12<00:09,  2.23it/s, loss=74.3, v_num=36]Epoch 0:  95%|█████████▌| 430/452 [03:12<00:09,  2.23it/s, loss=76.9, v_num=36]Epoch 0:  95%|█████████▌| 431/452 [03:13<00:09,  2.23it/s, loss=76.9, v_num=36]Epoch 0:  95%|█████████▌| 431/452 [03:13<00:09,  2.23it/s, loss=76.9, v_num=36]Epoch 0:  96%|█████████▌| 432/452 [03:13<00:08,  2.23it/s, loss=76.9, v_num=36]Epoch 0:  96%|█████████▌| 432/452 [03:13<00:08,  2.23it/s, loss=78.1, v_num=36]Epoch 0:  96%|█████████▌| 433/452 [03:14<00:08,  2.23it/s, loss=78.1, v_num=36]Epoch 0:  96%|█████████▌| 433/452 [03:14<00:08,  2.23it/s, loss=74.6, v_num=36]Epoch 0:  96%|█████████▌| 434/452 [03:14<00:08,  2.23it/s, loss=74.6, v_num=36]Epoch 0:  96%|█████████▌| 434/452 [03:14<00:08,  2.23it/s, loss=76.5, v_num=36]Epoch 0:  96%|█████████▌| 435/452 [03:15<00:07,  2.23it/s, loss=76.5, v_num=36]Epoch 0:  96%|█████████▌| 435/452 [03:15<00:07,  2.23it/s, loss=75.7, v_num=36]Epoch 0:  96%|█████████▋| 436/452 [03:15<00:07,  2.23it/s, loss=75.7, v_num=36]Epoch 0:  96%|█████████▋| 436/452 [03:15<00:07,  2.23it/s, loss=71.4, v_num=36]Epoch 0:  97%|█████████▋| 437/452 [03:16<00:06,  2.23it/s, loss=71.4, v_num=36]Epoch 0:  97%|█████████▋| 437/452 [03:16<00:06,  2.23it/s, loss=74, v_num=36]  Epoch 0:  97%|█████████▋| 438/452 [03:16<00:06,  2.23it/s, loss=74, v_num=36]Epoch 0:  97%|█████████▋| 438/452 [03:16<00:06,  2.23it/s, loss=74.2, v_num=36]Epoch 0:  97%|█████████▋| 439/452 [03:17<00:05,  2.23it/s, loss=74.2, v_num=36]Epoch 0:  97%|█████████▋| 439/452 [03:17<00:05,  2.23it/s, loss=74.8, v_num=36]Epoch 0:  97%|█████████▋| 440/452 [03:17<00:05,  2.23it/s, loss=74.8, v_num=36]Epoch 0:  97%|█████████▋| 440/452 [03:17<00:05,  2.23it/s, loss=73.3, v_num=36]
-Validating: 0it [00:00, ?it/s][A
-Validating:   0%|          | 0/12 [00:00<?, ?it/s][Ahuggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
-To disable this warning, you can either:
-	- Avoid using `tokenizers` before the fork if possible
-	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-
-Validating:   8%|▊         | 1/12 [00:01<00:12,  1.12s/it][AEpoch 0:  98%|█████████▊| 442/452 [03:18<00:04,  2.22it/s, loss=73.3, v_num=36]
-Validating:  17%|█▋        | 2/12 [00:01<00:09,  1.05it/s][A
-Validating:  25%|██▌       | 3/12 [00:02<00:08,  1.09it/s][AEpoch 0:  98%|█████████▊| 444/452 [03:20<00:03,  2.21it/s, loss=73.3, v_num=36]
-Validating:  33%|███▎      | 4/12 [00:03<00:07,  1.11it/s][A
-Validating:  42%|████▏     | 5/12 [00:04<00:06,  1.13it/s][AEpoch 0:  99%|█████████▊| 446/452 [03:22<00:02,  2.21it/s, loss=73.3, v_num=36]
-Validating:  50%|█████     | 6/12 [00:05<00:05,  1.14it/s][A
-Validating:  58%|█████▊    | 7/12 [00:06<00:04,  1.15it/s][AEpoch 0:  99%|█████████▉| 448/452 [03:23<00:01,  2.20it/s, loss=73.3, v_num=36]
-Validating:  67%|██████▋   | 8/12 [00:07<00:03,  1.16it/s][A
-Validating:  75%|███████▌  | 9/12 [00:07<00:02,  1.17it/s][AEpoch 0: 100%|█████████▉| 450/452 [03:25<00:00,  2.19it/s, loss=73.3, v_num=36]
-Validating:  83%|████████▎ | 10/12 [00:08<00:01,  1.17it/s][A
-Validating:  92%|█████████▏| 11/12 [00:09<00:00,  1.16it/s][AEpoch 0: 100%|██████████| 452/452 [03:27<00:00,  2.18it/s, loss=73.3, v_num=36]
-Validating: 100%|██████████| 12/12 [00:10<00:00,  1.13it/s][AEpoch 0: 100%|██████████| 452/452 [03:28<00:00,  2.17it/s, loss=73.3, v_num=36]
-                                                           [AEpoch 0: 100%|██████████| 452/452 [03:28<00:00,  2.17it/s, loss=73.3, v_num=36]Epoch 0: 100%|██████████| 452/452 [03:28<00:00,  2.17it/s, loss=73.3, v_num=36]
