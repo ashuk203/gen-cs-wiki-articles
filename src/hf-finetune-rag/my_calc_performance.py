@@ -97,8 +97,8 @@ def prepare_outlines_t5(outls_file):
 
 if __name__ == '__main__':
 
-    # gen_outls, actual_outls = prepare_outlines_rag()
-    gen_outls, actual_outls = prepare_outlines_t5(t5_outl_file)
+    gen_outls, actual_outls = prepare_outlines_rag()
+    # gen_outls, actual_outls = prepare_outlines_t5(t5_outl_file)
 
     num_outls = len(gen_outls)   # Should be same as len(actual_outls)
 
@@ -150,7 +150,7 @@ if __name__ == '__main__':
         [precision, recall]
     )
 
-    plt.savefig(out_fig_file)
+    # plt.savefig(out_fig_file)
     # print(pref, "Precision:", precision)
     # print(pref, "Recall:", recall)
     # print()
