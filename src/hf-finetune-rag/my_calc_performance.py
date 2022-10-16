@@ -1,6 +1,18 @@
-train_data_dir = "/home/aukey2/gen-cs-wiki-articles/rag_branch/data/cs_train_data"
+import matplotlib.pyplot as plt
+
+# train_data_dir = "data/training_data/cs_train_data_w2v"
+train_data_dir = "data/training_data/cs_train_data"
+
 actual_outl_file = f"{train_data_dir}/test.target"
+
+# gen_outl_file = f"{train_data_dir}/test.gen.target"
 gen_outl_file = f"{train_data_dir}/test.model_predicted"
+
+t5_outl_file = "data/t5_baseline_outlines.txt"
+
+
+fig_title = "Model Performance (T5 baseline)"
+out_fig_file = "documentation-pics/t5-baseline-metrics.png"
 
 
 def incr_freq(k, freq_dict):
@@ -9,7 +21,7 @@ def incr_freq(k, freq_dict):
     else:
         freq_dict[k] += 1
 
-def get_sorted_freqs(freq_dict, max_elems=50):
+def get_sorted_freqs(freq_dict, max_elems=6):
     res = list(freq_dict.items())
     res.sort(key = lambda t: t[1], reverse=True)
 
@@ -25,8 +37,16 @@ def print_sorted_freqs(freq_items, pref=''):
 
     print('\n')
 
+
 def parse_outl(outl, sect_delim=", "):
+    outl = outl.replace("</s>", "")
+    outl = outl.replace("\n", "")
+
+    subheadings = outl.split(sect_delim)
+    subheadings = [h.strip() for h in subheadings]
+
     return outl.split(sect_delim)
+
 
 def calc_intersection(outl1, outl2):
     """
@@ -44,13 +64,41 @@ def calc_intersection(outl1, outl2):
 
     return common, outl1 - common, outl2 - common
 
-if __name__ == '__main__':
 
+def prepare_outlines_rag():
     with open(actual_outl_file) as f:
         actual_outls = f.readlines()
 
     with open(gen_outl_file) as f:
         gen_outls = f.readlines()
+
+    return gen_outls, actual_outls
+
+
+def prepare_outlines_t5(outls_file):
+    actual_outls = []
+    gen_outls = []
+
+    with open(outls_file) as f:
+        f_lines = f.readlines()
+
+        for i in range(len(f_lines)):
+            if "Real headings" in f_lines[i]:
+                outl = f_lines[i + 1].replace(" [SEP] ", ", ")
+                actual_outls.append(outl)
+            elif "Generated headings" in f_lines[i]:
+                outl = f_lines[i + 1].replace(" [SEP] ", ", ")
+                outl = outl.replace("(*) ", "")
+
+                gen_outls.append(outl)
+
+    return gen_outls, actual_outls
+
+
+if __name__ == '__main__':
+
+    # gen_outls, actual_outls = prepare_outlines_rag()
+    gen_outls, actual_outls = prepare_outlines_t5(t5_outl_file)
 
     num_outls = len(gen_outls)   # Should be same as len(actual_outls)
 
@@ -94,9 +142,18 @@ if __name__ == '__main__':
     print("Analysis over", num_outls, "examples")
     pref = "\t"
 
-    print(pref, "Precision:", precision)
-    print(pref, "Recall:", recall)
-    print()
+    # Plotting precision and recall bar chart
+    plt.title(fig_title)
+    plt.xlabel("Article subheadings")
+    plt.bar(
+        ["Precision", "Recall"],
+        [precision, recall]
+    )
+
+    plt.savefig(out_fig_file)
+    # print(pref, "Precision:", precision)
+    # print(pref, "Recall:", recall)
+    # print()
 
     print(pref, "Most common sections:")
     print_sorted_freqs(most_common_sects, pref)

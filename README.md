@@ -249,8 +249,6 @@ The below steps outline what you would need to do for a fully customized trainin
 
 10. [Experimental] To calculate metrics like precision and recall of the generated outlines, run `src/hf-finetune-rag/my_calc_performance.py`
 
-Warning: this experimental steps need to be refactored to load the model in correctly. Step 8 correctly loads in the model (in `my_inference_demo.py`), so refer and copy paste the correct code in the experimental files
-
 
 # Demo video - In Progress
 
