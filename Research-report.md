@@ -1,34 +1,36 @@
 # Introduction
 
-In this work, we tackle the task of outline generation for articles using a modified version of the Retrieval Augmented Generation framework [[1]](#1). Specifically, given some knowledge base of existing Wikipedia documents and a text input of the form
+In this work, we tackle the task of outline generation for articles using a modified version of the Retrieval Augmented Generation framework [[1]](#1). We formulate our task as follows: given some knowledge base of existing Wikipedia documents, and a text input of the form
 
 `<topic>: <description about topic>`
 
-We aim to generate a list of possible subheadings for an article about this topic (e.g. ['Applications', 'History', 'Types']).
+we generate a list of possible subheadings (e.g. "Applications, History, Types") as the output for an article about this topic.
 
 # Related work
 
 Liu et al. [[4]](#4) try to directly generate entire wikipedia articles by framing the task as a sequence-to-sequence multi-document summarization task. Wikipedia articles are use as training data. The input documents for each article is the text of all the referenced works, and the target sequence is the article itself. This work uses an efficient variant of a transformer paired with some coarse selection techniques to account for the large size of the input and output text.
 
-Sauper et al. [[5]](#5) generate structured articles by generating a universal template for articles within a certain topic (e.g. "diseases") and jointly try to populate content for each subheading in the template using a perceptron algorithm & ILP formation.
+Sauper et al. [[5]](#5) generate structured articles by generating a universal template (i.e. list of common subheadings) for articles within a certain topic (e.g. "diseases") and jointly try to populate content for each subheading in the template using a perceptron algorithm & ILP formation.
 
-Zhang et al. [[6]](#6) propose the task of outline generation, which tries to generate an outline summary for any long document. The authors use a Markov dependency mechanism to first predict section boundries and then a corresponding heading for each section.
+Zhang et al. [[6]](#6) propose the task of outline generation, which tries to generate an outline summary for any long document. The authors use a Markov dependency mechanism to first predict section boundries and then a corresponding heading for each section from the input article.
 
 Yao et al. [[7]](#7) develop a story-generation model with improved coherence using a <i>plan-and-write</i> hierarchical generation framework: the model first generates a storyline and then writes a more detailed story using that storyline.
 
-Banerjee et al. [[8]](#8) attempt to automatically generate Wikipedia articles by using vector representation of entities within articles to identify similar articles. Using these similar article, scraped web content is organized into sections using ILP-based abstractive summarization.
+Banerjee et al. [[8]](#8) attempt to automatically generate Wikipedia articles by using vector representation of entities within articles to identify similar articles. Using these similar articles, the model scrapes and organizes web content into sections using ILP-based abstractive summarization.
 
-Drissi et al. [[9]](#9) attempt to improve the coherence of large outputs from nerual-based text generation models by first generating an outline to keep the model focused. The models start my generating topic sentences for the article, and then expand each setence to a full paragraph. The generators are based on a convolutional sequence-to-sequence model.
+Drissi et al. [[9]](#9) attempt to improve the coherence of large outputs from nerual-based text generation models by first generating an outline to keep the model focused. The models start by generating topic sentences for the article, and then they expand each sentence to a full paragraph. The generators are based off of a convolutional sequence-to-sequence model.
 
-Zhu et al. [[10]](#10) tackle generating the abstract of a Wikipedia article using a topic-aware multi-document summarization approach. Each input document for an article is divided into different topic, and this distribution is used conditionally to generate a wikipedia abstract for that article.
+Zhu et al. [[10]](#10) tackle generating the abstract of a Wikipedia article using a topic-aware multi-document summarization approach. Each input document for an article is divided into different topic, and this distribution is used conditionally to generate a Wikipedia abstract for that article.
 
-Hua et al. [[11]](#11) enhance the coherence of Transformer-based text generators using content plans and iterative refinement: keyphrases are assigned to sentence-level positions following a sequence-to-sequence task formulation, then this plan is iteratively refined using BART.
+Hua et al. [[11]](#11) enhance the coherence of Transformer-based text generators using content plans and iterative refinement: the content plan consists ofkeyphrases assigned to sentence-level positions through a sequence-to-sequence task learner, and then this content plan is iteratively refined (i.e. expanded) using BART.
 
 # Architecture
 
 ## Baseline
 
-As a baseline for this task, we train a T5 model to learn the sequence-to-sequence task of directly mapping from the text input to the section headings.
+As a baseline for this task, we finetune a T5 model to learn the task of generating subheadings for an article directly as a sequence-to-sequence task: given the text input of an article's title and short intro description about the article, directly generate section headings.
+
+This baseline formulation is a fairly direct NLP solution to the task of outline formulation we introduced earlier in this paper.
 
 ## Proposed Architecture
 
@@ -36,7 +38,9 @@ We chose to use a modified version of the RAG (Retrieval Augmented Generation) a
 
 ![Orig RAG overview](documentation-pics/RAG-overview.png)
 
-As shown in the above picture, the main components of the RAG architecture are the retreiver and the generator. Our main modifications are centered around the retriever. Specifically, we augment $q(x)$ by concatenating another feature vector representative of the input, say $v(x)$. We also augment $d(z)$ with the same kind of feature vector, i.e. $v(z)$. We add an additional fully connected layer on $q(x)$ after augmenting it to allow flexiblity in the dimensions for the query embedding and document / context embedding spaces.
+As shown in the above picture from the original RAG paper [[1]](#1), the main components of the RAG architecture are the retreiver and the generator. The retriever is derived from DPR. In the retriever, $q(x)$ represents the query vector (used to query context documents during DPR) and $d(z)$ represents the context vector (representations for retrieval units). In the original paper, $q(z)$ and $d(z)$ are both pre-trained $\text{BERT}_{\text{BASE}}$ models [[12]](#12), and the seq2seq conditional generator model is BART. 
+
+We base our model off of the RAG-Token variant. Our main modifications are centered around the retriever. We leave the generator architecture unchanged. Specifically, for the retriever, we augment $q(x)$ and $d(z)$ by concatenating an additional feature vector $v(x)$ (e.g. $v(x)$ can be a word2vec representation). We add an additional fully connected layer on $q(x)$ after augmenting it so that the query vector size can always be made to match the context vector for DPR.
 
 Mathematically,
 
@@ -45,13 +49,29 @@ Mathematically,
 
 where $W$ is a learnable parameter, $v(x)$ is some additional features of $x$, and $\bigoplus$ is the vector concatenation operator. Note that $v(x)$ isn't limited to the text of the article $x$. It could rely on additional meta data about the article (e.g. graphical embedding of the article).
 
-Additionally, unlike in the original RAG architecture, the text that is used to generate the representation of our context documents, $q(x)$, is different from the text that is passed down as input to the generator component. In the original RAG architecture and DPR works, the text used to generate the representation of documents and the text passed down as input to the generator component were the same.
+![V1 Extended RAG](documentation-pics/outline-gen-framework-1.png)
 
-![V1 Extended RAG](documentation-pics/outline-gen-framework-1.jpg)
+
+Additionally, unlike in the original RAG architecture, the text that is used to generate the representation of our context documents, $q(x)$, is different from the text that is passed down as input to the generator component. In the original RAG architecture and DPR works, the text used to generate the representation of documents and the text passed down as input to the generator component were the same.
 
 By formatting our architecture this way, we are forcing the Retreiver part of our architecture to learn to fetch similar / relevant documents, and the generator to create a summarized outline from the outlines of several similar documents.
 
 In a sense, this is like a learnable kNN model: the retriever learns to fetch similar documents based on some query embedding in a similar space (like fetching nearest neighbors), and the generator takes the outlines from these neighbors to generate the output (comporable to how the output is generated by looking at nearest-neighbors in kNN).
+
+## Rationale
+
+The reason for including an additional word2vec representation in addition to the BERT representation is to provide a more global, domain-centric representation of the feature / article we are trying to summarize. Without the additional query representation, we are limited to whatever pre-trained representation BERT had in the question encoder when determining similarity between documents. 
+
+There may be many instances where we want to augment a pre-trained representation with a more task-specific, focused one, and this architecture attempts to incorporate such representations into the RAG architecture. In particular, we focus on improving the retrieval component of the architecture, which is usually not a target for improvement by most other works.
+
+As we trained our word2vec encapsulates distributional similarity, and we trained our model on a specific subset of papers, we may be able to provide additional, useful context to the retriver when retrieving similar documents. 
+
+As both the retriver and generator are connected end-to-end, the retriver can tweak its similarity metric using loss from the generator during training.
+
+## Implementation
+
+We use huggingface's PyTorch implementation of RAG and its associated training scripts as our starting point.
+
 
 # Data Collection
 
@@ -83,23 +103,105 @@ In order to compare the generated subheadings with the ground truth subheadings,
 
 It is quite easy to generate metrics for an entire testing dataset by summing up the quantities over all articles in the set and taking the appropriate ratios. For initial experiments, two subheadings were considered to match if they matched exactly.
 
+<div style="display:flex">
+     <div style="flex:1;">
+          <img src="documentation-pics/t5-baseline-metrics.png" width="300"/>
+     </div>
+     <div style="flex:1;">
+          <img src="documentation-pics/rag-baseline-metrics.png" width="300"/>
+     </div>
+     <div style="flex:1;">
+          <img src="documentation-pics/rag-w2v-aug-metrics.png" width="300"/>
+     </div>
+</div>
+
+Note: the word2vec-augmented model has not been tweaked yet for best performance (in terms of decoding method and learning rate) as the other two baseline models have.
+
 For ablation analysis, we also trained a model where only the modification of using different texts for representation and generator input in the encoding during the retrieval step was implemented.
 
 Since there was a variability between articles, and our exact-match criteria might be considered to restrictive (e.g. "Applications" would not match "Uses and Apllications"), precision and recall for our models was quite low . For future work, a possible way to make the comparison more relaxed is to somehow group all similar headings and classify headings as matching if they belong in the same group.
 
+## Analysis
+
+To understand the results a bit better, the most frequent correctly and incorrectly headings were also generated. For the word2vec-augmented model, the results were:
+
+```
+Analysis over 1729 examples
+         Most common sections:
+          > ('History', 349)
+          > ('Examples', 103)
+          > ('Applications', 79)
+          > ('Definition', 62)
+          > ('Properties', 20)
+          > ('Types', 15)
+
+
+         Most missed sections:
+          > ('Overview', 76)
+          > ('Applications', 69)
+          > ('Types', 61)
+          > ('Definition', 60)
+          > ('Other uses', 59)
+          > ('History', 57)
+
+
+         Most extra sections:
+          > ('History', 989)
+          > ('Examples', 460)
+          > ('Applications', 446)
+          > ('Definition', 258)
+          > ('History,', 208)
+          > ('Types', 113)
+```
+
+where "most common" indicates correctly predicted headings, "most missed" indicates headings present in the ground truth, but not in the generated outline, and "mosts extra" indicates headings present in the generated outlines, but not in the ground truth. These statistics were very similar to the RAG baseline model:
+
+```
+Analysis over 1979 examples
+         Most common sections:
+          > ('History', 366)
+          > ('Definition', 82)
+          > ('Applications', 76)
+          > ('Examples', 70)
+          > ('Other uses', 55)
+          > ('Etymology', 40)
+
+
+         Most missed sections:
+          > ('History', 124)
+          > ('Overview', 93)
+          > ('Applications', 86)
+          > ('Examples', 65)
+          > ('Types', 64)
+          > ('Sources', 52)
+
+
+         Most extra sections:
+          > ('History', 648)
+          > ('Definition', 321)
+          > ('Applications', 316)
+          > ('Examples', 230)
+          > ('Etymology', 209)
+          > ('Properties', 127)
+```
+
+Most of the error rates seem to be coming from the failure to correctly assign general headings for each article. Often times, the most correctly predicted section also appears on the "most missed" or "most extra" error sections.
+
 # Pending work / Known Issues
 
-- Experiment with using Wikipedia2Vec [[3]](#3) for $v(x)$
+- Precision and recall for each model were calculated over different data sets. For better result comparison, use same training / eval data.
+
+- Experiment with using Wikipedia2Vec [[3]](#3) as $v(x)$
 
 - Use approximate matching when comparing generated subheadings to ground-truth subheadings
 
-- Learning rate / decoding method for last trained model produces repetitve results.
+- Last trained model produces repetitve results (i.e. the same heading is outputted multiple times). Need to tweak learning rate / decoding method.
 
 - Need to test on additional feature representations like word2vec.
 
 - There was a second variant for extending the RAG that was never implemented / tested out. The main difference between this variant and the first variant was to pass in the word2vec embedding as the first token in the embedding layer of the BERT architecture.
 
-![V2 Extended RAG](documentation-pics/outline-gen-framework-2.jpg)
+![V2 Extended RAG](documentation-pics/outline-gen-framework-2.png)
 
 # References
 
@@ -124,3 +226,8 @@ Since there was a variability between articles, and our exact-match criteria mig
 <a id="10">[10]</a> Zhu, F., Tu, S., Shi, J., Li, J., Hou, L., & Cui, T.. (2021). TWAG: A Topic-Guided Wikipedia Abstract Generator.
 
 <a id="11">[11]</a> Hua, X., & Wang, L. (2020). PAIR: Planning and Iterative Refinement in Pre-trained Transformers for Long Text Generation. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP) (pp. 781–793). Association for Computational Linguistics.
+
+<a id="12">[12]</a> Devlin, J., Chang, M.W., Lee, K., & Toutanova, K.. (2018). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.
+
+
+<a id="12">[12]</a> Lewis, M., Liu, Y., Goyal, N., Ghazvininejad, M., Mohamed, A., Levy, O., Stoyanov, V., & Zettlemoyer, L.. (2019). BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension.
